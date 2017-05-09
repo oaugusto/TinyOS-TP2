@@ -15,9 +15,10 @@ implementation {
   CollectorC.Boot -> MainC;
   CollectorC.RadioControl -> ActiveMessageC;
   CollectorC.Leds -> LedsC;
+  CollectorC.AMPacket -> ActiveMessageC;
 
-  CollectorC.BeaconSend -> AMSenderC;
-  CollectorC.BeaconReceive -> AMReceiverC;
+  CollectorC.Send -> AMSenderC;
+  CollectorC.Receive -> AMReceiverC;
 
   CollectorC.TimerOne -> timer1;
   CollectorC.TimerTwo -> timer2;

@@ -1,7 +1,7 @@
 #include <Timer.h>
 #include "Collector.h"
 
-module ModuleTestC {
+module CollectorC {
 
     provides interface Init;
 
@@ -10,8 +10,8 @@ module ModuleTestC {
         interface Leds;
 
 	interface AMPacket;
-	interface AMSend as BeaconSend;
-	interface Receive as BeaconReceive;
+	interface AMSend as Send;
+	interface Receive as Receive;
 	interface SplitControl as RadioControl;
 
         interface Timer<TMilli> as TimerOne;
@@ -44,8 +44,8 @@ implementation {
 		uint16_t maxLength;
 		radioOn = FALSE;
 		running = FALSE;
-		beaconMsg = call BeaconSend.getPayload(&beaconMsgBuffer, call BeaconSend.maxPayloadLength());
-		maxLength = call BeaconSend.maxPayloadLength();
+		beaconMsg = call Send.getPayload(&beaconMsgBuffer, call Send.maxPayloadLength());
+		maxLength = call Send.maxPayloadLength();
 		//dbg("", "");
 		return SUCCESS;
 	}
@@ -79,7 +79,7 @@ implementation {
 		beaconMsg->parent = parent;
 		//dbg("", "");
 		
-		eval = call BeaconSend.send(AM_BROADCAST_ADDR,
+		eval = call Send.send(AM_BROADCAST_ADDR,
 					    &beaconMsgBuffer,
 					    sizeof(collector_topo_header_t));		
 
@@ -92,7 +92,7 @@ implementation {
 
 	}
 
-	event void BeaconSend.sendDone(message_t* msg, error_t error) {
+	event void Send.sendDone(message_t* msg, error_t error) {
 		if ((msg != &beaconMsgBuffer) || !sending) {
 			return;
 		}
@@ -108,10 +108,10 @@ implementation {
 	}
 
 	collector_topo_header_t* getHeader(message_t* ONE m) {
-		return (collector_topo_header_t*)call BeaconSend.getPayload(m, call BeaconSend.maxPayloadLength());
+		return (collector_topo_header_t*)call Send.getPayload(m, call Send.maxPayloadLength());
 	}
 
-	event message_t* BeaconReceive.receive(message_t* msg, void* payload, uint8_t len) {
+	event message_t* Receive.receive(message_t* msg, void* payload, uint8_t len) {
 		am_addr_t from;
 		collector_topo_header_t* rcvBeacon;
 		
