@@ -1,0 +1,222 @@
+DEBUG (79): 
+IP: 5360	 range: 5360 reserved: 537
+filho:83	 ip:4823
+
+DEBUG (83): 
+IP: 4823	 range: 4823 reserved: 485
+filho:70	 ip:3719
+filho:95	 ip:4338
+
+DEBUG (7): 
+IP: 11101	 range: 1147 reserved: 116
+filho:17	 ip:10985
+
+DEBUG (36): 
+IP: 9954	 range: 4594 reserved: 463
+filho:75	 ip:5949
+filho:10	 ip:9491
+
+DEBUG (91): 
+IP: 14295	 range: 8935 reserved: 898
+filho:36	 ip:9954
+filho:7	 ip:11101
+filho:86	 ip:13397
+
+DEBUG (70): 
+IP: 3719	 range: 3719 reserved: 376
+filho:40	 ip:2007
+filho:30	 ip:2675
+filho:63	 ip:3343
+
+DEBUG (40): 
+IP: 2007	 range: 2007 reserved: 203
+filho:56	 ip:902
+filho:74	 ip:1804
+
+DEBUG (13): 
+IP: 7860	 range: 1911 reserved: 193
+filho:85	 ip:7667
+
+DEBUG (86): 
+IP: 13397	 range: 2296 reserved: 235
+filho:34	 ip:11788
+filho:27	 ip:12475
+filho:90	 ip:13162
+
+DEBUG (10): 
+IP: 9491	 range: 3542 reserved: 357
+filho:13	 ip:7860
+filho:50	 ip:9134
+
+DEBUG (85): 
+IP: 7667	 range: 1718 reserved: 173
+filho:18	 ip:7494
+
+DEBUG (87): 
+IP: 36330	 range: 1190 reserved: 120
+filho:100	 ip:36210
+
+DEBUG (50): 
+IP: 9134	 range: 1274 reserved: 129
+filho:3	 ip:9005
+
+DEBUG (1): 
+IP: 65534	 range: 65534 reserved: 6570
+filho:79	 ip:5360
+filho:91	 ip:14295
+filho:68	 ip:14889
+filho:9	 ip:15483
+filho:67	 ip:16077
+filho:43	 ip:35140
+filho:87	 ip:36330
+filho:21	 ip:36924
+filho:48	 ip:37518
+filho:45	 ip:58964
+
+DEBUG (43): 
+IP: 35140	 range: 19063 reserved: 1912
+filho:38	 ip:16629
+filho:60	 ip:26036
+filho:47	 ip:31569
+filho:26	 ip:33228
+
+DEBUG (31): 
+IP: 43583	 range: 6065 reserved: 609
+filho:29	 ip:39700
+filho:42	 ip:42974
+
+DEBUG (49): 
+IP: 20330	 range: 3173 reserved: 320
+filho:89	 ip:17727
+filho:61	 ip:20010
+
+DEBUG (29): 
+IP: 39700	 range: 2182 reserved: 220
+filho:15	 ip:39480
+
+DEBUG (26): 
+IP: 33228	 range: 1659 reserved: 169
+filho:82	 ip:32314
+filho:66	 ip:33059
+
+DEBUG (60): 
+IP: 26036	 range: 9407 reserved: 947
+filho:35	 ip:17157
+filho:49	 ip:20330
+filho:58	 ip:20858
+filho:19	 ip:24561
+filho:80	 ip:25089
+
+DEBUG (12): 
+IP: 21967	 range: 1109 reserved: 112
+filho:71	 ip:21855
+
+DEBUG (15): 
+IP: 39480	 range: 1962 reserved: 200
+filho:54	 ip:38399
+filho:28	 ip:39280
+
+DEBUG (47): 
+IP: 31569	 range: 5533 reserved: 558
+filho:92	 ip:26588
+filho:97	 ip:27693
+filho:8	 ip:31011
+
+DEBUG (19): 
+IP: 24561	 range: 3703 reserved: 374
+filho:12	 ip:21967
+filho:65	 ip:24187
+
+DEBUG (97): 
+IP: 27693	 range: 1105 reserved: 112
+filho:2	 ip:27581
+
+DEBUG (42): 
+IP: 42974	 range: 3274 reserved: 330
+filho:23	 ip:42056
+filho:32	 ip:42644
+
+DEBUG (8): 
+IP: 31011	 range: 3318 reserved: 333
+filho:96	 ip:30678
+
+DEBUG (61): 
+IP: 20010	 range: 2283 reserved: 234
+filho:99	 ip:18410
+filho:57	 ip:19093
+filho:77	 ip:19776
+
+DEBUG (25): 
+IP: 46336	 range: 1653 reserved: 169
+filho:76	 ip:45425
+filho:22	 ip:46167
+
+DEBUG (69): 
+IP: 47590	 range: 1254 reserved: 127
+filho:44	 ip:47463
+
+DEBUG (23): 
+IP: 42056	 range: 2356 reserved: 241
+filho:51	 ip:40405
+filho:11	 ip:41110
+filho:14	 ip:41815
+
+DEBUG (65): 
+IP: 24187	 range: 2220 reserved: 225
+filho:4	 ip:22632
+filho:72	 ip:23297
+filho:59	 ip:23962
+
+DEBUG (5): 
+IP: 49126	 range: 2790 reserved: 282
+filho:69	 ip:47590
+filho:78	 ip:48844
+
+DEBUG (45): 
+IP: 58964	 range: 21446 reserved: 2155
+filho:31	 ip:43583
+filho:6	 ip:44133
+filho:20	 ip:44683
+filho:25	 ip:46336
+filho:64	 ip:51298
+filho:16	 ip:53502
+filho:24	 ip:56809
+
+DEBUG (96): 
+IP: 30678	 range: 2985 reserved: 305
+filho:73	 ip:28363
+filho:37	 ip:29033
+filho:62	 ip:29703
+filho:53	 ip:30373
+
+DEBUG (24): 
+IP: 56809	 range: 3307 reserved: 332
+filho:33	 ip:56477
+
+DEBUG (78): 
+IP: 48844	 range: 1254 reserved: 127
+filho:84	 ip:48717
+
+DEBUG (16): 
+IP: 53502	 range: 2204 reserved: 224
+filho:52	 ip:51958
+filho:41	 ip:52618
+filho:88	 ip:53278
+
+DEBUG (64): 
+IP: 51298	 range: 4962 reserved: 500
+filho:5	 ip:49126
+filho:55	 ip:49683
+filho:39	 ip:50798
+
+DEBUG (39): 
+IP: 50798	 range: 1115 reserved: 113
+filho:93	 ip:50685
+
+DEBUG (33): 
+IP: 56477	 range: 2975 reserved: 303
+filho:98	 ip:54170
+filho:81	 ip:54838
+filho:94	 ip:55506
+filho:46	 ip:56174
+

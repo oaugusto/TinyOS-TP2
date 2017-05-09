@@ -1,0 +1,301 @@
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (43): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (31): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (75): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (7): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (43): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (86): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (62): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (86): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (75): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (62): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (43): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (75): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (99): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (68): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (54): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (9): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (76): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (73): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (50): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (73): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (75): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (92): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (75): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (54): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (4): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (35): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (31): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (7): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (99): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (74): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (99): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (35): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (31): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (43): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (75): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (9): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (75): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (9): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (46): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (75): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (75): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (60): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (92): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (76): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (18): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (62): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (76): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (7): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (99): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (54): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (86): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (76): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (99): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (54): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (43): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (99): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (75): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (73): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (50): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (75): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (73): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (70): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (92): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (43): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (75): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (2): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (52): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (28): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (7): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (94): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (35): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (15): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (54): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (50): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (9): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (39): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (69): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (60): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (40): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (99): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (75): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (52): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (18): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (74): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (73): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (12): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (54): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (62): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (20): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (67): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (43): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (2): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (99): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (75): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (92): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (99): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (99): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (43): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (94): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (76): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (74): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (2): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (97): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (99): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (76): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (12): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (7): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (12): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (73): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (2): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (15): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (20): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (86): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (9): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (18): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (20): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (100): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (86): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (75): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (54): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (35): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (12): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (99): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (80): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (73): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (43): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (54): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (86): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (75): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (54): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (68): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (43): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (12): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (86): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (31): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (97): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (48): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (20): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (67): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (73): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (2): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (48): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (48): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (12): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (67): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (54): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (2): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (48): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK,table downwards new entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (54): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (67): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (2): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (54): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (1): MatrixRoutingEngineP$0$tableUpdateEntry_Downwards OK, updated table downwards entry
+DEBUG (1): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 594 etx: 595
+DEBUG (1): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 1188 etx: 595
+DEBUG (1): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 16081 etx: 14894
+DEBUG (54): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 9005 etx: 7818
+DEBUG (1): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 16675 etx: 595
+DEBUG (99): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 1728 etx: 541
+DEBUG (54): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 9562 etx: 558
+DEBUG (1): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 28589 etx: 11915
+DEBUG (54): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 14587 etx: 5026
+DEBUG (99): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 2268 etx: 541
+DEBUG (2): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 10126 etx: 565
+DEBUG (99): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 3349 etx: 1082
+DEBUG (2): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 13516 etx: 3391
+DEBUG (1): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 28589 etx: 11915
+DEBUG (43): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 20624 etx: 3950
+DEBUG (1): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 35737 etx: 7149
+DEBUG (67): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 13176 etx: 3051
+DEBUG (2): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 14080 etx: 565
+DEBUG (69): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 3239 etx: 972
+DEBUG (99): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 3889 etx: 541
+DEBUG (9): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 19635 etx: 2961
+DEBUG (43): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 21187 etx: 564
+DEBUG (12): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 34436 etx: 5848
+DEBUG (1): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 36331 etx: 595
+DEBUG (48): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 10811 etx: 686
+DEBUG (92): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 17340 etx: 666
+DEBUG (9): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 20226 etx: 592
+DEBUG (99): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 4429 etx: 541
+DEBUG (48): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 11496 etx: 686
+DEBUG (73): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 29172 etx: 584
+DEBUG (92): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 18005 etx: 666
+DEBUG (43): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 21187 etx: 564
+DEBUG (99): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 5510 etx: 1082
+DEBUG (73): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 29755 etx: 584
+DEBUG (48): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 12181 etx: 686
+DEBUG (1): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 36331 etx: 595
+DEBUG (12): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 34436 etx: 5848
+DEBUG (73): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 30338 etx: 584
+DEBUG (48): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 12866 etx: 686
+DEBUG (92): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 18670 etx: 666
+DEBUG (1): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 38713 etx: 2383
+DEBUG (92): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 19335 etx: 666
+DEBUG (18): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 38473 etx: 2143
+DEBUG (1): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 39307 etx: 595
+DEBUG (73): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 33260 etx: 2923
+DEBUG (43): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 21187 etx: 564
+DEBUG (99): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 5510 etx: 1082
+DEBUG (12): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 34436 etx: 5848
+DEBUG (20): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 32309 etx: 1972
+DEBUG (73): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 33843 etx: 584
+DEBUG (94): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 37293 etx: 963
+DEBUG (12): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 35019 etx: 584
+DEBUG (40): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 5400 etx: 972
+DEBUG (99): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 6050 etx: 541
+DEBUG (94): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 38255 etx: 963
+DEBUG (97): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 31223 etx: 886
+DEBUG (20): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 32965 etx: 657
+DEBUG (1): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 39307 etx: 595
+DEBUG (43): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 21187 etx: 564
+DEBUG (99): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 7672 etx: 1623
+DEBUG (40): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 5400 etx: 972
+DEBUG (43): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 27393 etx: 6207
+DEBUG (97): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 32108 etx: 886
+DEBUG (1): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 42284 etx: 2978
+DEBUG (12): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 35019 etx: 584
+DEBUG (15): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 6778 etx: 729
+DEBUG (99): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 8212 etx: 541
+DEBUG (15): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 7506 etx: 729
+DEBUG (35): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 26212 etx: 5026
+DEBUG (31): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 41315 etx: 2009
+DEBUG (1): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 58964 etx: 16681
+DEBUG (76): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 21751 etx: 565
+DEBUG (35): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 26769 etx: 558
+DEBUG (68): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 41113 etx: 1807
+DEBUG (31): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 41983 etx: 669
+DEBUG (80): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 40931 etx: 1625
+DEBUG (1): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 58964 etx: 16681
+DEBUG (76): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 22315 etx: 565
+DEBUG (76): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 22879 etx: 565
+DEBUG (86): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 53959 etx: 11676
+DEBUG (76): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 24008 etx: 1130
+DEBUG (75): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 42808 etx: 525
+DEBUG (86): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 57294 etx: 3336
+DEBUG (39): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 23894 etx: 1016
+DEBUG (75): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 43332 etx: 525
+DEBUG (76): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 25702 etx: 1695
+DEBUG (74): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 56359 etx: 2401
+DEBUG (50): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 55398 etx: 1440
+DEBUG (74): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 56958 etx: 600
+DEBUG (75): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 43856 etx: 525
+DEBUG (70): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 55253 etx: 1295
+DEBUG (50): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 56117 etx: 720
+DEBUG (76): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 25702 etx: 1695
+DEBUG (75): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 44905 etx: 1050
+DEBUG (100): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 44799 etx: 944
+DEBUG (75): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 48581 etx: 3677
+DEBUG (52): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 24769 etx: 762
+DEBUG (52): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 25530 etx: 762
+DEBUG (7): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 47661 etx: 2757
+DEBUG (75): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 50681 etx: 2101
+DEBUG (60): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 49210 etx: 630
+DEBUG (75): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 51730 etx: 1050
+DEBUG (62): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 45524 etx: 620
+DEBUG (7): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 48211 etx: 551
+DEBUG (62): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 46763 etx: 1240
+DEBUG (28): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 46638 etx: 1115
+DEBUG (4): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 51624 etx: 944
+DEBUG (62): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 47382 etx: 620
+DEBUG (75): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 52254 etx: 525
+DEBUG (60): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 50469 etx: 1260
+DEBUG (75): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 52778 etx: 525
+DEBUG (46): MatrixRoutingEngineP$0$sendDistributionTask$runTask parent: 50342 etx: 1133
