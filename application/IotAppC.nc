@@ -13,8 +13,18 @@ implementation {
   components new AMReceiverC(AM_REPLY_TOPO) as ReceiverReply;
 
   components new TimerMilliC() as RetryTimerC;
-  components new TimerMilliC() as timer2;
+  components new TimerMilliC() as ReplyTimerC;
   components RandomC;
+
+  //serial
+  // components SerialActiveMessageC as Serial;
+
+  // App.SerialControl -> Serial;
+  
+  // App.UartSend -> Serial;
+  // App.UartReceive -> Serial.Receive;
+  // App.UartPacket -> Serial;
+  // App.UartAMPacket -> Serial;
 
   MainC.SoftwareInit -> App;
   App.Boot -> MainC;
@@ -23,16 +33,16 @@ implementation {
   App.AMPacket -> ActiveMessageC;
 
   //Request topo
-  App.Send -> SenderReq;
-  App.Receive -> ReceiverReq;
+  App.SendRequest -> SenderReq;
+  App.ReceiveRequest -> ReceiverReq;
 
   //Reply topo
-  App.Send -> SenderReply;
-  App.Receive -> ReceiverReply;
+  App.SendReply -> SenderReply;
+  App.ReceiveReply -> ReceiverReply;
 
   App.RoutingAck -> ActiveMessageC;
 
   App.RetryTimer -> RetryTimerC;
-  App.TimerTwo -> timer2;
+  App.ReplyTimer -> ReplyTimerC;
   App.Random -> RandomC;
 } 

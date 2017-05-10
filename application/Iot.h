@@ -15,20 +15,20 @@ enum {
 };
 
 
-typedef nx_struct {
+typedef nx_struct request_topo{
     nx_uint16_t        seqno;
 } request_topo_t;   
 
-typedef nx_struct {
+typedef nx_struct ReplyTopo{
     nx_uint16_t        seqno;
     nx_uint16_t       parent;
     nx_uint16_t        origem;
 } reply_topo_t;   
 
-typedef nx_struct FlushReplyMsg {
+typedef nx_struct {
 	nx_uint16_t seqno;
 
-} reques_data_t;
+} request_data_t;
 
 typedef struct {
     nx_uint16_t seqno;
