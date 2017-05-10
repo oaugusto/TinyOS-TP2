@@ -1,5 +1,4 @@
-COMPONENT=CollectorAppC
-#CFLAGS += -I$(TOSDIR)/lib/net \
-#          -I$(TOSDIR)/lib/net/4bitle \
-#          -I$(TOSDIR)/lib/net/ctp
-include $(MAKERULES)
+COMPONENT=IotAppC
+
+#include $(MAKERULES)
+include $(TINYOS_ROOT_DIR)/Makefile.include
