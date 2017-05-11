@@ -16,8 +16,12 @@ module IotC {
 		interface AMPacket;
 		interface AMSend as SendRequest;
 		interface AMSend as SendReply;
+		interface AMSend as TxReqData;
+		interface AMSend as TxReplyData;
 		interface Receive as ReceiveRequest;
 		interface Receive as ReceiveReply;
+		interface Receive as RxReqData;
+		interface Receive as RxReplyData;
 		interface SplitControl as RadioControl;
 		interface PacketAcknowledgements as RoutingAck;
 
@@ -30,6 +34,10 @@ module IotC {
 
         interface Timer<TMilli> as RetryTimer;
         interface Timer<TMilli> as ReplyTimer;
+     //    interface Timer<TMilli> as TimerSensor;
+
+	    // interface Read<uint16_t> as ReadPhoto;
+	    // interface Read<uint16_t> as ReadTemp;
 
         interface Random;
     }
@@ -48,7 +56,9 @@ implementation {
 	
 	bool sending = FALSE;
 
-	bool state_is_root;
+	
+	uint16_t lastLuminosity;
+	uint16_t lastTemperature;
 	
 	am_addr_t my_ll_addr;
 
@@ -189,6 +199,7 @@ implementation {
 
 	event void Boot.booted() {
 		call RadioControl.start();
+		//call TimerSensor.startPeriodic(500);
 		// call SerialControl.start();
 		dbg("Boot", "Application booted.\n");
 	}
@@ -302,6 +313,9 @@ implementation {
 
 	}
 
+	event void TxReqData.sendDone(message_t* msg, error_t error) {}
+	event void TxReplyData.sendDone(message_t* msg, error_t error) {}
+
 	event void RetryTimer.fired() {
 	    if (retransmittingRequest) {
 	    	if(TOS_NODE_ID != 0)
@@ -377,6 +391,40 @@ implementation {
 
 	}
 
+	event message_t* RxReqData.receive(message_t* msg, void* payload, uint8_t len) {
+		if (len == sizeof(request_data_t)) {
+			dbg("RequestData", "Receive request of data packet len %hhu. Time: %s\n", len, sim_time_string());
+		}
+		
+		return msg;
+
+	}
+
+	event message_t* RxReplyData.receive(message_t* msg, void* payload, uint8_t len) {
+		if (len == sizeof(reply_data_t)) {
+			dbg("RequestData", "Receive reply of data packet len %hhu. Time: %s\n", len, sim_time_string());
+		}
+		
+		return msg;
+
+	}
+
+	// event void ReadPhoto.readDone(error_t result, uint16_t val){
+	// 	if (result == SUCCESS){
+	// 		lastLuminosity = val;
+	// 	}
+	// }
+	
+	// event void ReadTemp.readDone(error_t result, uint16_t val){
+	// 	if (result == SUCCESS){
+	// 		lastTemperature = val;
+	// 	}
+	// }
+
+	// event void TimerSensor.fired(){
+	// 	call ReadPhoto.read();
+	// 	call ReadTemp.read();
+	// }
 
   // event void UartSend.sendDone[am_id_t id](message_t* msg, error_t error) {}
   // event message_t *UartReceive.receive[am_id_t id](message_t *msg, void *payload, uint8_t len) {  

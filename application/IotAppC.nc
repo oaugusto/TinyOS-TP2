@@ -12,9 +12,19 @@ implementation {
   components new AMSenderC(AM_REPLY_TOPO) as SenderReply;
   components new AMReceiverC(AM_REPLY_TOPO) as ReceiverReply;
 
+  components new AMSenderC(AM_REQ_DATA) as RequestData;
+  components new AMReceiverC(AM_REQ_DATA) as ReceiverReqData;
+
+  components new AMSenderC(AM_REPLY_DATA) as ReplyData;
+  components new AMReceiverC(AM_REPLY_DATA) as ReceiverData;
+
   components new TimerMilliC() as RetryTimerC;
   components new TimerMilliC() as ReplyTimerC;
+  //components new TimerMilliC() as TimerSensor;
   components RandomC;
+
+  // components new PhotoC();
+  // components new TempC();
 
   //serial
   // components SerialActiveMessageC as Serial;
@@ -40,9 +50,22 @@ implementation {
   App.SendReply -> SenderReply;
   App.ReceiveReply -> ReceiverReply;
 
-  App.RoutingAck -> ActiveMessageC;
+   //Request data
+  App.TxReqData -> RequestData;
+  App.RxReqData -> ReceiverReqData;
 
+  //Reply data
+  App.TxReplyData -> ReplyData;
+  App.RxReplyData -> ReceiverData;
+
+  App.RoutingAck -> ActiveMessageC;
   App.RetryTimer -> RetryTimerC;
   App.ReplyTimer -> ReplyTimerC;
   App.Random -> RandomC;
+
+
+
+  //App.TimerSensor -> TimerSensor;
+  //App.ReadPhoto ->PhotoC;
+  //App.ReadTemp -> TempC;
 } 
