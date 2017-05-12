@@ -32,8 +32,8 @@ typedef nx_struct {
 
 typedef struct {
     nx_uint16_t seqno;
-    nx_uint16_t data_luz;
-    nx_uint16_t data_temp;
+    nx_uint16_t data_luminosity;
+    nx_uint16_t data_temperature;
     nx_uint16_t origem;
     nx_uint16_t extra[10];
 } reply_data_t;

@@ -20,6 +20,8 @@ implementation {
 
   components new TimerMilliC() as RetryTimerC;
   components new TimerMilliC() as ReplyTimerC;
+  components new TimerMilliC() as ReqDataTimerC;
+  components new TimerMilliC() as OrigTimerC;
   //components new TimerMilliC() as TimerSensor;
   components RandomC;
 
@@ -61,6 +63,8 @@ implementation {
   App.RoutingAck -> ActiveMessageC;
   App.RetryTimer -> RetryTimerC;
   App.ReplyTimer -> ReplyTimerC;
+  App.OrigPktTimer -> OrigTimerC;
+  App.ReplyDataTimer -> ReqDataTimerC;
   App.Random -> RandomC;
 
 
