@@ -6,9 +6,21 @@
  */
 var serialPort = require('serialport');
 
-var portCtrl = module.exports = function(port_addr, baudRate) {
+var BaudRate = { telos:	     115200,
+                 telosb:	 115200,
+                 tmote:	     115200,
+                 micaz:	     57600,
+                 mica2:	     57600,
+                 iris:	     57600,
+                 mica2dot:	 19200,
+                 eyes:	     115200,
+                 intelmote2: 115200 };
+
+var portCtrl = module.exports = function(port_addr) {
     this.port = new serialPort(port_addr, {
-        baudRate: baudRate,
+        baudRate: BaudRate.iris,
+        stopBits: 1,    // 1 or 2.
+        parity: 'none', //'none', 'even', 'mark', 'odd' or 'space' 
         autoOpen: false
     });
 }
