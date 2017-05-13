@@ -6,47 +6,29 @@
  */
 var serialPort = require('serialport');
 
-var portCtrl = module.exports = function() {
-
-    serialPort.list(function (err, ports) {
-        ports.forEach(function(port) {
-            console.log(port.comName);
-            console.log(port.pnpId);
-            console.log(port.manufacturer);
-        });
+var portCtrl = module.exports = function(port_addr, baudRate) {
+    this.port = new serialPort(port_addr, {
+        baudRate: baudRate,
+        autoOpen: false
     });
-
-    try {
-        this.port = new serialPort('/dev/tty-usbserial1', {
-            baudRate: 57600, // For iris
-            autoOpen: false
-        });
-
-    } catch (err) {
-        console.log("Coudn't open the port.")
-    }
 }
 
-portCtrl.prototype.send = function() {
-    console.log('> ' + this.msg);
+portCtrl.prototype.send = function(data) {
+    console.log('Sending message: [' + this.msg + ']');
     
     this.port.on('open', function(){
-        this.port.write('teste', function(err) {
+        this.port.write(data, function(err) {
             if (err) 
                 return console.log('Error on write operation:', err.message);
             else
                 console.log('Message written.');     
         });
     }); 
-
-    // Sends updates when new data arrive.
-    this.port.on('data', function(data) {
-        console.log('Data: ' + data);
-    })
 }
 
-portCtrl.prototype.rcv = function() {
-
+portCtrl.prototype.rcv = function(data_handle) {
+    // Sends updates when new data arrive.
+    this.port.on('data', data_handle);
 }
 
 portCtrl.prototype.close = function() {
