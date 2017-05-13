@@ -4,6 +4,8 @@ configuration IotAppC { }
 
 implementation {
 
+
+
   components  MainC, LedsC, ActiveMessageC;
   components IotC as App;
   components new AMSenderC(AM_REQ_TOPO) as SenderReq;
@@ -22,11 +24,20 @@ implementation {
   components new TimerMilliC() as ReplyTimerC;
   components new TimerMilliC() as ReqDataTimerC;
   components new TimerMilliC() as OrigTimerC;
-  //components new TimerMilliC() as TimerSensor;
+  components new TimerMilliC() as TimerSensor;
   components RandomC;
 
-  // components new PhotoC();
-  // components new TempC();
+
+
+#if defined(PLATFORM_IRIS)
+  components new PhotoC();
+  components new TempC();
+  App.TimerSensor -> TimerSensor;
+  App.ReadPhoto ->PhotoC;
+  App.ReadTemp -> TempC;
+
+
+#endif
 
   //serial
   // components SerialActiveMessageC as Serial;
@@ -67,9 +78,4 @@ implementation {
   App.ReplyDataTimer -> ReqDataTimerC;
   App.Random -> RandomC;
 
-
-
-  //App.TimerSensor -> TimerSensor;
-  //App.ReadPhoto ->PhotoC;
-  //App.ReadTemp -> TempC;
 } 

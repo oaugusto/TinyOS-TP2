@@ -37,10 +37,10 @@ module IotC {
         interface Timer<TMilli> as ReplyTimer;
         interface Timer<TMilli> as ReplyDataTimer;
         interface Timer<TMilli> as OrigPktTimer;
-     //    interface Timer<TMilli> as TimerSensor;
+     	interface Timer<TMilli> as TimerSensor;
 
-	    // interface Read<uint16_t> as ReadPhoto;
-	    // interface Read<uint16_t> as ReadTemp;
+	interface Read<uint16_t> as ReadPhoto;
+	interface Read<uint16_t> as ReadTemp;
 
         interface Random;
     }
@@ -363,7 +363,9 @@ implementation {
 	event void Boot.booted() {
 		call RadioControl.start();
 		clean_buffer();
-		//call TimerSensor.startPeriodic(500);
+#if defined(PLATFORM_IRIS)
+		call TimerSensor.startPeriodic(500);
+#endif
 		// call SerialControl.start();
 		dbg("Boot", "Application booted.\n");
 	}
@@ -722,22 +724,22 @@ implementation {
 
 	}
 
-	// event void ReadPhoto.readDone(error_t result, uint16_t val){
-	// 	if (result == SUCCESS){
-	// 		lastLuminosity = val;
-	// 	}
-	// }
+	event void ReadPhoto.readDone(error_t result, uint16_t val){
+		if (result == SUCCESS){
+	 		lastLuminosity = val;
+	 	}
+	}
 	
-	// event void ReadTemp.readDone(error_t result, uint16_t val){
-	// 	if (result == SUCCESS){
-	// 		lastTemperature = val;
-	// 	}
-	// }
+	event void ReadTemp.readDone(error_t result, uint16_t val){
+		if (result == SUCCESS){
+			lastTemperature = val;
+		}
+	}
 
-	// event void TimerSensor.fired(){
-	// 	call ReadPhoto.read();
-	// 	call ReadTemp.read();
-	// }
+	event void TimerSensor.fired(){
+		call ReadPhoto.read();
+		call ReadTemp.read();
+	}
 
   // event void UartSend.sendDone[am_id_t id](message_t* msg, error_t error) {}
   // event message_t *UartReceive.receive[am_id_t id](message_t *msg, void *payload, uint8_t len) {  

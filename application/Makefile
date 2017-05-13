@@ -2,8 +2,10 @@ COMPONENT=IotAppC
 TOSMAKE_PRE_EXE_DEPS = RequestTopo.py RequestTopo.class
 TOSMAKE_CLEAN_EXTRA = RequestTopo.py RequestTopo.class RequestTopo.java
 CFLAGS += -I$(TINYOS_OS_DIR)/sensorboards/mda100/cb
+CFLAGS += -I$(TINYOS_OS_DIR)/sensorboards/mda100
+#CFLAGS += -I$(TOSDIR)/sensorboards/mda100
+#CFLAGS += -I$(TOSDIR)/sensorboards/mda100/cb
 
-SENSORBOARD=mts300
 
 
 RequestTopo.py: Iot.h
