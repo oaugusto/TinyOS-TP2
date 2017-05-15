@@ -18,7 +18,7 @@ var BaudRate = { telos:	     115200,
 
 var portCtrl = module.exports = function(port_addr) {
     this.port = new serialPort(port_addr, {
-        baudRate: BaudRate.iris,
+        baudRate: BaudRate.telosb,
         stopBits: 1,    // 1 or 2.
         parity: 'none', //'none', 'even', 'mark', 'odd' or 'space' 
         autoOpen: false

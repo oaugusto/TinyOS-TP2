@@ -1,10 +1,11 @@
 var PortCtrl       = require('./portCtrl');
 var Timer          = require('timer');
 var TOSMsgCreator  = require('./TOSMsgCreator');
+var Tools          = require('./tools');
 
-var base = module.exports = function (port_info, own_id) {
+var base = module.exports = function (port_addr, own_id) {
     this.id      = own_id;
-    this.port    = new PortCtrl(port_info.addr, port_info.baudrate);
+    this.port    = new PortCtrl(port_addr);
     this.creator = new TOSMsgCreator();
 
     this.rid      =  0; // Should be random?
@@ -12,7 +13,8 @@ var base = module.exports = function (port_info, own_id) {
 }
 
 base.prototype.requestTopology = function() {
-    var msg = this.creator.create();
+    var payload = Tools.valueToNBytes(this.rid, 2);
+    var msg = this.creator.create(0xffff, own_id, 0x00, 0x01, payload);
 
     this.port.send(msg.toBuffer());
     this.port.rcv(this.handleTopReq);
@@ -22,7 +24,8 @@ base.prototype.requestTopology = function() {
 }
 
 base.prototype.requestRead = function() {
-    var msg = this.creator.create();
+    var payload = Tools.valueToNBytes(this.rid, 2);
+    var msg = this.creator.create(0xffff, own_id, 0x00, 0x03, payload);
 
     this.port.send(msg.toBuffer());
     this.port.rcv(this.handleRead);
@@ -40,10 +43,12 @@ base.prototype.requestMultipleReads = function(num_reads, time_interval) {
     }
 }
 
-base.prototype.handleTopReq = function() {
-
+base.prototype.handleTopReq = function(data) {
+    var msg = this.creator.createFromBuffer(data);
+    console.log('Data: ' + data);
 }
 
-base.prototype.handleRead = function() {
-
+base.prototype.handleRead = function(data) {
+    var msg = this.creator.createFromBuffer(data);
+    console.log('Data:' + data);
 }
