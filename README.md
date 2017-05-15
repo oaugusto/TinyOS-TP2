@@ -9,9 +9,9 @@ sudo apt-get install nodejs
 ```
 sudo apt-get install npm
 ```
-3. Pacotes **serialport**, **express** e **pug**
+3. Pacotes **serialport**, **express**, **pug** e **socket.io**
 ```
-npm install serialport express pug
+npm install serialport express pug socket.io
 ```
 
 ### To Do:

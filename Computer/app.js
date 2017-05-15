@@ -21,6 +21,9 @@ for (var i=0; i < tosmsg.length; i++)
     console.log(tosmsg[i]);*/
 
 var app = express();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
 app.set('views', './views');
 app.set('view engine', 'pug');
 
@@ -31,20 +34,37 @@ app.get('/', function(req, res) {
   });
 });
 
-app.get('/reqtop', function(req, res) {
-  res.render('top', {
-    title: 'Welcome'
+// Handles the application requests.
+io.on('connection', function(socket){
+  console.log('User connected.');
+
+  socket.on('reqtop', function(msg){
+    if (msg.request) {
+      console.log('Request: Network topology.');
+      io.emit('restop', msg);
+    }
+  })
+
+  socket.on('reqread', function(msg){
+    if (msg.request) {
+      console.log('Request: Read.');
+      io.emit('resread', msg);
+    }
+  })
+
+  socket.on('reqmread', function(msg){
+    if (msg.request) {
+      console.log('Request: Multiple reads.');
+      io.emit('resmread', msg);
+    }
+  })
+
+
+  socket.on('disconnect', function(){
+    console.log('User disconnected');
   });
 });
 
-app.listen(3000);
-
-//console.log(msg.getMsgInBytes);
-/*var http = require('http');
-
-var server = http.createServer(function(req, res) {
-    res.writeHead(200); // 200 - OK
-    res.end(opstatus);
+http.listen(3000, function(){
+  console.log('Listening on localhost:3000')
 });
-
-server.listen(8000);*/

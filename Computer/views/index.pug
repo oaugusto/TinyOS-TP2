@@ -3,13 +3,20 @@ html
     title=title
     link(href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css', rel='stylesheet')
   body
+    p
     div.container
       div.jumbotron
         h1 Hello #{name}!
         p Welcome to my app, ready to get started?
         p
-        a.btn.btn-primary(href="/reqtop") Get Net Topology
+        a.btn.btn-primary#reqtop(href="#") Get Net Topology
         span &nbsp;
-        a.btn.btn-danger(href="/reqdata") Read data 
+        a.btn.btn-danger#reqread(href="#") Request Read
+        span &nbsp;
+        a.btn.btn-success#reqmread(href="#") Request Multiple Reads 
         p
-        span.small Somente um exemplo
+        div#messages
+  script(src='http://code.jquery.com/jquery-latest.min.js')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.1/socket.io.js')        
+  script
+    include ../js/sup.js
