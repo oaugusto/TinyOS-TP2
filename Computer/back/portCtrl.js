@@ -5,6 +5,7 @@
  * http://tinyos.stanford.edu/tinyos-wiki/index.php/Mote-PC_serial_communication_and_SerialForwarder_(TOS_2.1.1_and_later)
  */
 var serialPort = require('serialport');
+var SerialPort = serialPort.SerialPort;
 
 var BaudRate = { telos:	     115200,
                  telosb:	 115200,
@@ -17,25 +18,24 @@ var BaudRate = { telos:	     115200,
                  intelmote2: 115200 };
 
 var portCtrl = module.exports = function(port_addr) {
-    this.port = new serialPort(port_addr, {
-        baudRate: BaudRate.telosb,
-        stopBits: 1,    // 1 or 2.
-        parity: 'none', //'none', 'even', 'mark', 'odd' or 'space' 
-        autoOpen: false
+    console.log('Port on addr: ',port_addr);
+
+    this.port = new SerialPort(port_addr, {
+        baudRate: BaudRate.telosb//,
+//        stopBits: 1,    // 1 or 2.
+//        parity: 'none'  //'none', 'even', 'mark', 'odd' or 'space' 
     });
 }
 
 portCtrl.prototype.send = function(data) {
-    console.log('Sending message: [' + this.msg + ']');
+    console.log('Sending message: [' + data + ']');
     
-    this.port.on('open', function(){
-        this.port.write(data, function(err) {
-            if (err) 
-                return console.log('Error on write operation:', err.message);
-            else
-                console.log('Message written.');     
-        });
-    }); 
+    this.port.write(data, function(err) {
+        if (err) 
+            return console.log('Error on write operation:', err.message);
+        else
+            console.log('Message written.');     
+    });
 }
 
 portCtrl.prototype.rcv = function(data_handle) {

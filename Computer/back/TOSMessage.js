@@ -77,12 +77,14 @@ TOSMsg.prototype.calculateMsgLen = function() {
 TOSMsg.prototype.toBuffer = function() {
     var totalLength = HEADER_SIZE + Tools.bufferToValue(this.msg_len);
 
-    return Buffer.concat([this.dest_addr,
+    var buffer = Buffer.concat([this.dest_addr,
                              this.src_addr,
                              this.msg_len,
                              this.groupID,
                              this.handlerID,    
                              this.payload], totalLength);  
+
+    return buffer;
 }
 
 TOSMsg.prototype.toJSON = function() {

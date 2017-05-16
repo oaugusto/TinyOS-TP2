@@ -2,17 +2,19 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var base = require('./back/base')('/dev/ttyUSB0', 0x0000);
+var Base = require('./back/base');
 
 app.set('views', './views');
 app.set('view engine', 'pug');
 
 app.get('/', function(req, res) {
   res.render('index', {
-    title: 'Welcome',
-    name: 'Jose'
+    title: 'Home',
+    name: 'Visitor'
   });
 });
+
+//base = new Base('/dev/ttyUSB0', 0x0000);
 
 // Handles the application requests.
 io.on('connection', function(socket){
@@ -21,7 +23,7 @@ io.on('connection', function(socket){
   socket.on('reqtop', function(msg){
     if (msg.request) {
       console.log('Request: Network topology.');
-      
+      //base.requestTopology();
       io.emit('restop', msg);
     }
   })

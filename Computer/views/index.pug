@@ -4,25 +4,28 @@ html
     link(href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css', rel='stylesheet')
     style
       include ../css/mystyle.css
+    style
+      include ../css/vis-network.min.css
   body
     p
     div.container
       div.col-sm-12.line
         h1 Hello #{name}!
         p Welcome to my app, ready to get started?
-        br
+        div#top.col-sm-12.panel
+          //div#read.col-sm-5.panel
       div.col-sm-12.line
-        div#top.col-sm-5.panel
-        div#read.col-sm-5.panel
-      br
-      div.col-sm-12.line
-        a.btn.btn-primary#reqtop(href="#") Get Net Topology
-        span &nbsp;
-        a.btn.btn-danger#reqread(href="#") Request Read
-        span &nbsp;
-        a.btn.btn-success#reqmread(href="#") Request Multiple Reads 
+        div.col-sm-1
+          a.btn.btn-primary#reqtop(href="#") Get Net Topology
+          span &nbsp;
+        div.col-sm-4.col-sm-offset-7#readsreq
+          a.btn.btn-danger#reqread(href="#") Request Read
+          span &nbsp;
+          a.btn.btn-success#reqmread(href="#") Request Multiple Reads 
     
   script(src='http://code.jquery.com/jquery-latest.min.js')
   script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.1/socket.io.js')        
+  script 
+    include ../js/vis.js
   script
     include ../js/sup.js

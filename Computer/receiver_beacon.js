@@ -2,7 +2,7 @@
 	
 	var serialport = require("serialport");
 	var SerialPort = serialport.SerialPort
-	var BLEPort = new SerialPort("/dev/ttyUSB3", {
+	var BLEPort = new SerialPort("/dev/ttyUSB0", {
   		baudrate: 115200
 	});
 	
@@ -190,18 +190,18 @@ var BLEParse = function(pk){
 	var BLEStarted = false;
 	BLEPort.on("open", function () {
 	console.log("open BLE");
-				BLEPort.on('data', function(data) {
-							//console.log("pkg in",data);
+				BLEPort.on('data', teste);
+		//setInterval(BLEtimer,5000);
+	});
+ 
+var teste = function(data) {
+							console.log("pkg in",data);
 							data.copy(currPkt,currPnt);
 							currPnt += data.length;
 							if(currPnt >= 12){
 								currPnt = 0;
 								BLEParse(currPkt);
 							}
-				});
-		//setInterval(BLEtimer,5000);
-	});
- 
-
+				}
 
 //

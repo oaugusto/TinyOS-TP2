@@ -1,15 +1,13 @@
 var Msg   = require('./TOSMessage');
 var Tools = require('./tools');
 
-var TOSMsgCreator = module.exports = function () {}
-
-TOSMsgCreator.prototype.create = function(dest_addr, src_addr, groupID, 
+module.exports.create = function(dest_addr, src_addr, groupID, 
                                         handlerID, payload) {
 
     return new Msg.TOSMsg(dest_addr, src_addr, groupID, handlerID, payload);
 }
 
-TOSMsgCreator.prototype.createFromBuffer = function (msg_array) {
+module.exports.createFromBuffer = function (msg_array) {
     if (!(msg_array instanceof Buffer))
         throw 'Error: Array must be of type Buffer.';
 

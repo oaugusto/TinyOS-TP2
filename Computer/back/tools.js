@@ -25,3 +25,11 @@ module.exports.bufferToValue = function(bArray) {
 
     return value;
 }
+
+module.exports.extractBufferfromJSON = function(json) {
+    return JSON.parse(JSON.stringify(json), (key, value) => {
+        return value && value.type === 'Buffer'
+            ? Buffer.from(value.data)
+            : value;
+    });
+}
