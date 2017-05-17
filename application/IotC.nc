@@ -72,11 +72,9 @@ implementation {
 	uint16_t seqnoReplyData = 0;
 	uint8_t count = 1;
 
-
 	uint16_t seqnoOrigTopo = 1;
 	uint16_t seqnoOrigData = 1;
 
- 
 	uint8_t tries = 0;
 	uint8_t maxRetransmissions = 2;
 	uint8_t numRetransmissions = 0;
