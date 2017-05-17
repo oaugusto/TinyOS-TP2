@@ -104,6 +104,12 @@ implementation {
 	uint8_t pos_bufferData = 0;
 
 
+#if defined(PLATFORM_MICAZ)
+	bool bRequestData = TRUE;
+#endif
+
+
+#if defined(PLATFORM_MICAZ)
 	void initRequest(){
 		error_t eval;		
 		request_topo_t* beaconMsg = (request_topo_t*) call SendRequest.getPayload(&beaconMsgBuffer, sizeof(request_topo_t) );
@@ -117,13 +123,34 @@ implementation {
 		if (eval == SUCCESS) {
 			sending = TRUE;
 			dbg("RequestTopo", "Request topology by node %hhu Time: %s\n", TOS_NODE_ID ,sim_time_string());
+			call Leds.led1On();
+			call Leds.led2Toggle();
+			//Request data
+			dbg("RequestTopo", "Request data after %d ms  Time: %s\n", 30000, sim_time_string());
+			call OrigPktTimer.startOneShot(15000);
 		}
 	}
 
+	void initRequestData(){
+		error_t eval;		
+		request_data_t* reqPkt = (request_data_t*) call SendRequest.getPayload(&requestDataBuffer, sizeof(request_data_t) );
+		reqPkt->seqno = count;
+
+		if(sending){
+			return;
+		}
+
+		eval = call TxReqData.send(AM_BROADCAST_ADDR, &requestDataBuffer, sizeof(request_data_t));
+		if (eval == SUCCESS) {
+			sending = TRUE;
+			dbg("RequestTopo", "Request data by node %hhu Time: %s\n", TOS_NODE_ID ,sim_time_string());
+		}
+	}
+
+#endif
 
     bool check_node(uint16_t origin, uint16_t buf[TAM_BUF]){
-        uint8_t i, count;
-        count = 0;
+        uint8_t i;
         for(i = 0; i < TAM_BUF; i++){
         	if(buf[i] == origin){
         	    return TRUE;
@@ -142,8 +169,7 @@ implementation {
 
 
     void addContent(uint16_t buf[TAM_BUF], uint16_t origin, uint8_t *pos) {
-        uint8_t i, count;
-        count = 0;
+        uint8_t i;
         for(i = 0; i < TAM_BUF; i++){
         	if(buf[i] == origin){
         	    return;
@@ -169,8 +195,7 @@ implementation {
 			return;
 		}
 
-		// beaconMsg = call Send.getPayload(&beaconMsgBuffer, call Send.maxPayloadLength());
-		// maxLength = call Send.maxPayloadLength();
+
 	    if (requireAck) {
 	      eval = call RoutingAck.requestAck(&beaconMsgBuffer);
 	    } else {
@@ -196,7 +221,7 @@ implementation {
 			//dbg("", "");
 		}
 
-		//Reply data
+		//Reply topo
 		r = call Random.rand16();
 		r %= window;
 		r += 500;
@@ -375,10 +400,12 @@ implementation {
 			call RadioControl.start();
 		} else {
 			radioOn = TRUE;
-			if (TOS_NODE_ID == 0) {
-				//Teste request topo
-				initRequest();
-			}
+			#if defined(PLATFORM_MICAZ)
+				if (TOS_NODE_ID == 0) {
+					//Teste request topo
+					initRequest();
+				}
+			#endif
 		}
 	}
 
@@ -388,9 +415,6 @@ implementation {
 
   // event void SerialControl.startDone(error_t error) {}
   // event void SerialControl.stopDone(error_t error) {}
-
-
-
 
 
 
@@ -566,10 +590,6 @@ implementation {
 	      }
 	    }
 
-	    // if(ownData){
-	    // 	ownData = FALSE;
-	    // 	seqnoOrigData++;
-	    // }
 	    numRetransmissions = 0;
 	    retransmitting = FALSE;
 
@@ -605,6 +625,18 @@ implementation {
   			post replyDataTask();
     	}
 
+    	#if defined(PLATFORM_MICAZ)
+    	if(TOS_NODE_ID == 0){
+    		if(bRequestData){
+    			call OrigPktTimer.startOneShot(30000);
+    			bRequestData = FALSE;
+    		}
+    		else{
+    			initRequestData();
+    		}
+    	}
+    	#endif
+
 	}
 
 	event void ReplyDataTimer.fired() {
@@ -617,6 +649,7 @@ implementation {
 
 	event message_t* ReceiveRequest.receive(message_t* msg, void* payload, uint8_t len) {
 
+		//testes REMOVE
 		if(TOS_NODE_ID == 0){
 			return msg;
 		}
@@ -686,7 +719,7 @@ implementation {
 				seqnoReqData = seqnoAux;
 				//parent = from; //Usa para resposta
 				//dbg("RequestTopo", "Configura parent %d Time: %s\n", parent,  sim_time_string());
-				dbg("RequestTopo", "Encaminha Time: %s\n", sim_time_string());
+				dbg("RequestTopo", "Encaminha reqData Time: %s\n", sim_time_string());
 				//dbg("RequestTopo", "Received seqnoAux %hhu seqno %hhu. Time: %s\n", seqnoAux, seqno, sim_time_string());
 				requestDataBuffer = *msg;
 				post requestDataTask();
@@ -715,7 +748,7 @@ implementation {
 				//dbg("RequestTopo", "Received seqnoAux %hhu seqno %hhu. Time: %s\n", seqnoAux, seqno, sim_time_string());
 				dataBuffer = *msg;
 				addContent(bufferData_ids, origemPkt, &pos_bufferData);
-				post replyTopoTask();
+				post replyDataTask();
 
 			}
 		}
