@@ -1,6 +1,10 @@
+body{
+    width: 100%;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
 div.panel {
     height: 70%;
-    margin-left: 5px;
     text-align: center;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -9,8 +13,6 @@ div.panel {
 
 div#top {
     background-color: #e6e6e6;
-    border-width: 1px;
-    border-color: #555555;
 }
 
 div#read {
@@ -19,14 +21,26 @@ div#read {
 
 div.container {
     background-color: #d3d3d3;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
-div.container > div.line {
-    margin-bottom: 5px;
+div.line {
+    margin-bottom: 10px;
     text-align: center;
 }
 
-div#readsreq {
-    align: left;
+.btn {
+    border-radius: 2px;
+    font-size: 18px;
+}
+
+.multreadpanel {
+    border-top: 2px solid #adadad;
+    background-color: #adadad;
+    padding-bottom: 5px;
+}
+
+div.header {
+    font-size: 48px;
+    padding-top: 10px;
 }

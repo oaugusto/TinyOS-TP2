@@ -64,8 +64,8 @@ base.prototype.requestRead = function() {
     }
 
     this.port = new SerialPort(this.port_addr, {
-        baudRate: BaudRate.telosb, 
-        parser: SerialPort.parsers.byteLength(11) // CHANGE
+        baudRate: BaudRate.telosb//, 
+        //parser: SerialPort.parsers.byteLength(11) // CHANGE
     });
 
     var payload = Tools.valueToNBytes(this.rid, 2);
