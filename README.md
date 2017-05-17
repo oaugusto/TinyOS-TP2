@@ -1,9 +1,21 @@
 # Trabalho Prático 2 de IoT
 
 ### Instalar dependencias:
-1. Node.js: instalar legado por causa do pacote **serialport**
+1. Node.js:
 ```
 sudo apt-get install nodejs-legacy
+```
+2. Instalar **yarn**:
+```
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt-get update && sudo apt-get install yarn
+```
+3. Instalar pacotes necessarios
+```
+yarn add pug
+yarn add express
+yarn add socket.io
 ```
 2. Gerencidaor de pacotes do Nodejs (**npm**)
 ```
