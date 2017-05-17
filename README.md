@@ -1,30 +1,17 @@
 # Trabalho Prático 2 de IoT
 
 ### Instalar dependencias:
-1. Node.js: instalar legado por causa do pacote **serialport**
+1. Instalar **yarn**:
 ```
-sudo apt-get install nodejs-legacy
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt-get update && sudo apt-get install yarn
 ```
-2. Gerencidaor de pacotes do Nodejs (**npm**)
+2. Instalar pacotes necessarios
 ```
-sudo apt-get install npm
+yarn add pug
+yarn add express
+yarn add socket.io
+yarn add serialport
+yarn add timer
 ```
-3. Pacotes **serialport**, **express**, **pug** e **socket.io**
-```
-npm install serialport express pug socket.io
-```
-
-### To Do:
-1. Codigo para os nos
-
-2. Codigo para o no base
-
-3. Backend
-- Montar modelo de mensagens
-- Implementar recebimento de dados
-
-3. Frontend 
-- Montar corpo da pagina de exibicao.
-- Fazer painel de exibicao de topologia.
-- Fazer "mapa" de exibicao de temperatura.
-- Fazer "mapa" de exibicao de luminosidade.  
