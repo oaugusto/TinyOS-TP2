@@ -78,7 +78,7 @@ implementation {
 
  
 	uint8_t tries = 0;
-	uint8_t maxRetransmissions = 1;
+	uint8_t maxRetransmissions = 2;
 	uint8_t numRetransmissions = 0;
 
 	message_t beaconMsgBuffer;
@@ -457,7 +457,7 @@ implementation {
 	        }
 	      }
 	      // else{
-	      // 	dbg("Boot", "ACKED numRetransmissions %hhu.\n", numRetransmissions);
+	      // 	dbg("Boot", "ACK Request TOPO numRetransmissions %hhu.\n", numRetransmissions);
 	      // }
 	    }
 
@@ -499,6 +499,9 @@ implementation {
 	          }
 	        }
 	      }
+	      // else{
+	      // 	dbg("Boot", "ACK Reply Topo numRetransmissions %hhu.\n", numRetransmissions);
+	      // }
 	    }
 
 	    // if(ownTopo){
