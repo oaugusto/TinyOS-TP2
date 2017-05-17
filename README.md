@@ -1,9 +1,9 @@
 # Trabalho Prático 2 de IoT
 
 ### Instalar dependencias:
-1. Node.js
+1. Node.js: instalar legado por causa do pacote **serialport**
 ```
-sudo apt-get install nodejs
+sudo apt-get install nodejs-legacy
 ```
 2. Gerencidaor de pacotes do Nodejs (**npm**)
 ```
