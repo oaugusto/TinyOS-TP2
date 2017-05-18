@@ -28,6 +28,7 @@ public class TinyHttpServer {
 	@OnMessage
 	public void onMessage(String message, Session session) {
 		System.out.println("Message from " + session.getId() + " : " + message);
+		System.out.println(message);
 		/*
 		//here we have to deal with two types of message:
 		 * request topo

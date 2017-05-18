@@ -3,11 +3,17 @@ import java.io.IOException;
 import net.tinyos.message.Message;
 import net.tinyos.message.MessageListener;
 import net.tinyos.message.MoteIF;
+import net.tinyos.packet.BuildSource;
+import net.tinyos.packet.PhoenixSource;
+import net.tinyos.util.PrintStreamMessenger;
 
 public class BaseStationApp implements MessageListener{
 
 	private static BaseStationApp baseStation;
 	private static MoteIF moteConnection;
+	
+	public static PhoenixSource phoenix;
+	public static String source; 
 	
 	public void start() {
 		
@@ -22,7 +28,7 @@ public class BaseStationApp implements MessageListener{
 	
 	private static MoteIF getMoteInstance() {
 		if (moteConnection == null) {
-			moteConnection = new MoteIF();
+			moteConnection = new MoteIF(phoenix);
 		}
 		return moteConnection;	
 	}
@@ -73,7 +79,28 @@ public class BaseStationApp implements MessageListener{
 		}
 	}
 	
-	public static void main(String[] args) {
+	public static void usage() {
+		System.out.println("usage: BaseStationApp [-comm <source>]");
+	}
+	
+	public static void main(String[] args) throws Exception {
+	    if (args.length == 2) {
+	      if (!args[0].equals("-comm")) {
+		       usage();
+		       System.exit(1);
+	      }
+	      source = args[1];
+	    }
+
+	    if (source == null) {
+	      phoenix = BuildSource.makePhoenix(PrintStreamMessenger.err);
+	    }
+	    else {
+	      phoenix = BuildSource.makePhoenix(source, PrintStreamMessenger.err);
+	    }
+	    
+	    System.out.print(phoenix);
+		  
 		BaseStationApp base = new BaseStationApp();
 		base.start();
 	}
