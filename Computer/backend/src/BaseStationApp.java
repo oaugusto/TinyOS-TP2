@@ -9,6 +9,10 @@ public class BaseStationApp implements MessageListener{
 	private static BaseStationApp baseStation;
 	private static MoteIF moteConnection;
 	
+	public void start() {
+		
+	}
+	
 	private static BaseStationApp getInstance() {
 		if (baseStation == null) {
 			baseStation = new BaseStationApp();
@@ -71,6 +75,7 @@ public class BaseStationApp implements MessageListener{
 	
 	public static void main(String[] args) {
 		BaseStationApp base = new BaseStationApp();
+		base.start();
 	}
 	
 }
