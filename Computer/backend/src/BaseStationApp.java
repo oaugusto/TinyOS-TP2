@@ -1,4 +1,7 @@
 import java.io.IOException;
+//import java.net.ServerSocket;
+//import java.net.Socket;
+//import java.util.Scanner;
 
 import net.tinyos.message.Message;
 import net.tinyos.message.MessageListener;
@@ -15,8 +18,42 @@ public class BaseStationApp implements MessageListener{
 	public static PhoenixSource phoenix;
 	public static String source; 
 	
-	public void start() {
+	public static int version = 0;
+	
+	public void startServer() throws IOException {
+		/*
+		ServerSocket servidor = new ServerSocket(12345);
+		System.out.println("Porta 12345 aberta!");
+     
+		Socket cliente = servidor.accept();
+		System.out.println("Nova conexão com o cliente " +   
+				cliente.getInetAddress().getHostAddress()
+				);
+     
+		Scanner s = new Scanner(cliente.getInputStream());
 		
+		if (s.toString().equals("RequestTopo")) {
+			RequestTopo rqstMsg = new RequestTopo();
+			rqstMsg.set_seqno(version++);
+			baseStation.sendMessageToMote(rqstMsg);
+		}
+		
+		if (s.toString().equals("RequestData")) {
+			RequestData rqstMsg = new RequestData();
+			rqstMsg.set_seqno(version++);
+			baseStation.sendMessageToMote(rqstMsg);
+		}
+		
+		System.out.println("Request sent");
+		
+		while (s.hasNextLine()) {
+			System.out.println(s.nextLine());
+		}
+     
+		s.close();
+		servidor.close();
+		cliente.close();
+	*/
 	}
 	
 	private static BaseStationApp getInstance() {
@@ -102,7 +139,7 @@ public class BaseStationApp implements MessageListener{
 	    System.out.print(phoenix);
 		  
 		BaseStationApp base = new BaseStationApp();
-		base.start();
+		base.startServer();
 	}
 	
 }
