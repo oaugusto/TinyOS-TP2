@@ -1,7 +1,8 @@
 import java.io.IOException;
-//import java.net.ServerSocket;
-//import java.net.Socket;
-//import java.util.Scanner;
+import java.io.PrintStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Scanner;
 
 import net.tinyos.message.Message;
 import net.tinyos.message.MessageListener;
@@ -12,48 +13,19 @@ import net.tinyos.util.PrintStreamMessenger;
 
 public class BaseStationApp implements MessageListener{
 
+	private static ServerSocket server;
+	private static Socket client;
+	
 	private static BaseStationApp baseStation;
 	private static MoteIF moteConnection;
 	
 	public static PhoenixSource phoenix;
 	public static String source; 
 	
-	public static int version = 0;
+	public static int version_request_message = 0;
 	
 	public void startServer() throws IOException {
-		/*
-		ServerSocket servidor = new ServerSocket(12345);
-		System.out.println("Porta 12345 aberta!");
-     
-		Socket cliente = servidor.accept();
-		System.out.println("Nova conexão com o cliente " +   
-				cliente.getInetAddress().getHostAddress()
-				);
-     
-		Scanner s = new Scanner(cliente.getInputStream());
-		
-		if (s.toString().equals("RequestTopo")) {
-			RequestTopo rqstMsg = new RequestTopo();
-			rqstMsg.set_seqno(version++);
-			baseStation.sendMessageToMote(rqstMsg);
-		}
-		
-		if (s.toString().equals("RequestData")) {
-			RequestData rqstMsg = new RequestData();
-			rqstMsg.set_seqno(version++);
-			baseStation.sendMessageToMote(rqstMsg);
-		}
-		
-		System.out.println("Request sent");
-		
-		while (s.hasNextLine()) {
-			System.out.println(s.nextLine());
-		}
-     
-		s.close();
-		servidor.close();
-		cliente.close();
-	*/
+		server = new ServerSocket(9000);
 	}
 	
 	private static BaseStationApp getInstance() {
@@ -78,16 +50,25 @@ public class BaseStationApp implements MessageListener{
 	
 	@Override
 	public void messageReceived(int destAddr, Message msg) {
+		PrintStream output = null;
 		
 		if (msg instanceof ReplyTopo) {
 			ReplyTopo rcv = (ReplyTopo)msg;
-			
+			    
 			System.out.println("Message received:\n" 
 					+ "source: " + rcv.get_origem() + "\n"
 					+ "type: "   + rcv.amType()     + "\n"
 					+ "parent: " + rcv.get_parent() + "\n"
 					+ "seq: "    + rcv.get_seqno());
-		
+			
+			String aux = MessageCode.encodeReplyTopoToJson((ReplyTopo)msg);
+			try {
+				output = new PrintStream(client.getOutputStream());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		}
 		
 		if (msg instanceof ReplyData) {
@@ -99,7 +80,18 @@ public class BaseStationApp implements MessageListener{
 					+ "luminosity: " + rcv.get_data_luminosity() + "\n"
 					+ "temperature"  + rcv.get_data_temperature() + "\n"
 					+ "seq: "    + rcv.get_seqno());
+			
+			String aux = MessageCode.encodeReplyDataToJson((ReplyData)msg);
+			try {
+				output = new PrintStream(client.getOutputStream());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		}
+		
+		output.close();
 		
 	}
 
@@ -121,6 +113,7 @@ public class BaseStationApp implements MessageListener{
 	}
 	
 	public static void main(String[] args) throws Exception {
+		
 	    if (args.length == 2) {
 	      if (!args[0].equals("-comm")) {
 		       usage();
@@ -137,9 +130,34 @@ public class BaseStationApp implements MessageListener{
 	    }
 	    
 	    System.out.print(phoenix);
-		  
 		BaseStationApp base = new BaseStationApp();
+		
+		//------------------------------------------------------------------------	
 		base.startServer();
+		
+		System.out.println("Porta 12345 aberta!");
+	     
+		client = server.accept();
+		System.out.println("Nova conexão com o cliente " +   
+				client.getInetAddress().getHostAddress()
+				);
+		
+		for(;;) {
+			Scanner s = new Scanner(client.getInputStream());
+			
+			if (s.toString().equals("RequestTopo")) {
+				RequestTopo rqstMsg = new RequestTopo();
+				rqstMsg.set_seqno(version_request_message++);
+				baseStation.sendMessageToMote(rqstMsg);
+			}
+			
+			if (s.toString().equals("RequestData")) {
+				RequestData rqstMsg = new RequestData();
+				rqstMsg.set_seqno(version_request_message++);
+				baseStation.sendMessageToMote(rqstMsg);
+			}
+		}
+		
 	}
 	
 }

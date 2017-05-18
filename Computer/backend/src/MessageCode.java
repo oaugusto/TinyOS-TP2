@@ -6,20 +6,20 @@ import net.tinyos.message.Message;
 
 public class MessageCode {
 
-	public static String encodeReplyTopoToJson(Message msg){
+	public static String encodeReplyTopoToJson(ReplyTopo msg){
 		JSONObject json = new JSONObject();
-		json.put("seq", ((ReplyTopo) msg).get_seqno());
-		json.put("id", ((ReplyTopo) msg).get_origem());
-		json.put("parent", ((ReplyTopo) msg).get_parent());
+		json.put("seq", msg.get_seqno());
+		json.put("id", msg.get_origem());
+		json.put("parent", msg.get_parent());
 		return json.toString();
 	}
 	
-	public static String encodeReplyDataToJson(Message msg){
+	public static String encodeReplyDataToJson(ReplyData msg){
 		JSONObject json = new JSONObject();
-		json.put("seq", ((ReplyData) msg).get_seqno());
-		json.put("id", ((ReplyData) msg).get_origem());
-		json.put("temperature", ((ReplyData) msg).get_data_temperature());
-		json.put("luminosity", ((ReplyData) msg).get_data_luminosity());		
+		json.put("seq", msg.get_seqno());
+		json.put("id",  msg.get_origem());
+		json.put("temperature", msg.get_data_temperature());
+		json.put("luminosity", msg.get_data_luminosity());		
 		return json.toString();
 	}
 	
