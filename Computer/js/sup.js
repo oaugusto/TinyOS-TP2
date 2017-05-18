@@ -1,4 +1,4 @@
-var socket;
+var socket = io();
 var network;
 var nodes;
 var edges;
@@ -7,7 +7,6 @@ var data;
 var vis_options;
 
 $('document').ready(function(){
-    socket  = io();
     network = null;
     display = document.getElementById('top');
     vis_options = {
@@ -25,7 +24,7 @@ $('document').ready(function(){
             shadow: true
         },
         interaction: {
-            dragNodes: false,
+            dragNodes: true,
             dragView: false,
             zoomView: false
         },
@@ -43,29 +42,20 @@ var updateNodes = function(){
     });
 }
 
+var createNodeLabel = function(id, temp, lum){
+    return 'Node ' + id
+         + '\nTemp.: '+ temp.toFixed(2)
+         + ' C\nLum.: '+ lum.toFixed(2) + ' lux';
+}
+
 // Requests
 $('#reqtop').click(function(){
     $('div#top').empty();
     socket.emit('reqtop', {request: true});
 
-    nodes = new vis.DataSet([
-    {id: 31, label: 'Node 31'},
-    {id: 32, label: 'Node 32'},
-    {id: 33, label: 'Node 33'},
-    {id: 34, label: 'Node 34'},
-    {id: 35, label: 'Node 35'},
-    {id: 36, label: 'Node 36'}
-    ]);
+    nodes = new vis.DataSet();
+    edges = new vis.DataSet();
 
-    // create an array with edges
-    edges = new vis.DataSet([
-    {from: 31, to: 33},
-    {from: 31, to: 32},
-    {from: 32, to: 34},
-    {from: 32, to: 35},
-    {from: 33, to: 36}
-    ]);
-    
     data = {
         nodes: nodes,
         edges: edges
@@ -74,38 +64,66 @@ $('#reqtop').click(function(){
     network = new vis.Network(display, data, vis_options);
 })
 
-$('#reqread').click(function(){
-    socket.emit('reqread', {request: true});
-    updateNodes();
+socket.on('restop', function(msg){
+    console.log('Message Received.');
+
+    if (nodes.get(msg.parent) == null) {
+        var node_label = "Node " + msg.parent;
+        nodes.add({id: msg.parent,
+                   label: node_label,
+                   color: '#d3d3d3'})
+    }
+
+    if (nodes.get(msg.child) == null) {
+        var node_label = "Node " + msg.child;
+        nodes.add({id: msg.child,
+                   label: node_label,
+                   color: '#d3d3d3'})
+    }
+
+    edges.update({from: msg.parent, to: msg.child});  
 })
 
+
+// Individual read function.
+var read_fun = function(){
+    nodes.forEach(function(node) {
+        node.color = '#d3d3d3';
+    });
+    
+    socket.emit('reqread', {request: true});
+};
+
+// Request
+$('#reqread').click(read_fun);
+
+// Answers
+socket.on('resread', function(msg){
+    console.log('Read Received.');
+
+    var node_label = createNodeLabel(msg.src, msg.temp, msg.lum); 
+
+    nodes.update({id: msg.src,
+                  label: node_label,
+                  color: '#8AF487'});
+})
+
+
+// Multiple reads.
 $('#reqmread').click(function(){
     var numreads = document.getElementById('numreads').value;
     var time_interval = document.getElementById('time').value;
 
     if (network != null) {
-        socket.emit('reqmread', {request: true});
         for (var i = 0; i <= numreads; i++) {
-            setTimeout(updateNodes, time_interval * i);
+            setTimeout(read_fun, time_interval * i);
         }
     }
 })
 
-// Answers
-socket.on('restop', function(msg){
-    if (msg.request) {
-        $('div#top').append('<p>ReqTop</p>')
-    } 
-})
-
-socket.on('resread', function(msg){
-    if (msg.request) {
-        $('div#top').append('<p>ReqRead</p>')
-    } 
-})
-
-socket.on('resmread', function(msg){
+/*socket.on('resmread', function(msg){
     if (msg.request) {
         $('div#top').append('<p>ReqMulRead</p>')
     } 
-})
+})*/
+
