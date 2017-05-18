@@ -138,23 +138,30 @@ public class BaseStationApp implements MessageListener{
 		System.out.println("Porta 12345 aberta!");
 	     
 		client = server.accept();
-		System.out.println("Nova conexão com o cliente " +   
+		System.out.println("Nova conexï¿½o com o cliente " +   
 				client.getInetAddress().getHostAddress()
 				);
 		
 		for(;;) {
 			Scanner s = new Scanner(client.getInputStream());
+			while (!s.hasNext());
+			String request = s.next();
 			
-			if (s.toString().equals("RequestTopo")) {
+			if (request.equals("RequestTopo")) {
+				System.out.println("> RequestTopo");
 				RequestTopo rqstMsg = new RequestTopo();
+				rqstMsg.amTypeSet(1);
 				rqstMsg.set_seqno(version_request_message++);
-				baseStation.sendMessageToMote(rqstMsg);
+				getInstance().sendMessageToMote(rqstMsg);
 			}
 			
-			if (s.toString().equals("RequestData")) {
+			if (request.equals("RequestData")) {
+				System.out.println("> RequestData");
+				System.out.println(s.toString());
 				RequestData rqstMsg = new RequestData();
+				rqstMsg.amTypeSet(3);
 				rqstMsg.set_seqno(version_request_message++);
-				baseStation.sendMessageToMote(rqstMsg);
+				getInstance().sendMessageToMote(rqstMsg);
 			}
 		}
 		
