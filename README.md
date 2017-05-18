@@ -14,4 +14,5 @@ yarn add express
 yarn add socket.io
 yarn add serialport
 yarn add timer
+yarn add json-socket
 ```
