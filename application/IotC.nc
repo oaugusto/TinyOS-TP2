@@ -367,10 +367,12 @@ task void replyDataTask();
 		
 		dbg("RequestData", "Task replyDataTask from node %hhu to node %hhu seqno %hhu Time: %s\n", pktData->origem, parent, pktData->seqno, sim_time_string());
 		
-		eval = call TxReplyData.send(parent, &dataBuffer, sizeof(reply_data_t));		
+		eval = call TxReplyData.send(parent, &dataBuffer, sizeof(reply_data_t));	
 
 		if (eval == SUCCESS) {
 			sending = TRUE;
+			call Leds.led1Toggle();
+			call Leds.led2Toggle();
 			//seqnoData++;
 		} 
 
