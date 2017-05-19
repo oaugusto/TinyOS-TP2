@@ -244,8 +244,7 @@ task void replyDataTask();
 		error_t eval;
 		reply_topo_t* pkt = (reply_topo_t*)call SendReply.getPayload(&topoMsgBuffer, sizeof(reply_topo_t));
 		dbg("RequestTopo", "ReplyTopoTask Time: %s\n", sim_time_string());
-		call Leds.led1On();
-		call Leds.led2Toggle();
+
 
 		if (sending) {
 			dbg("RequestTopo", "Error in reply  Time: %s\n", sim_time_string());
@@ -276,6 +275,8 @@ task void replyDataTask();
 
 		if (eval == SUCCESS) {
 			sending = TRUE;
+			call Leds.led1Toggle();
+			call Leds.led2Toggle();
 		} 
 
 
@@ -371,8 +372,8 @@ task void replyDataTask();
 
 		if (eval == SUCCESS) {
 			sending = TRUE;
-			call Leds.led1Toggle();
 			call Leds.led2Toggle();
+			call Leds.led3Toggle();
 			//seqnoData++;
 		} 
 
