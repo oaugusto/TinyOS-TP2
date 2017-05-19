@@ -101,6 +101,8 @@ implementation {
 	uint8_t pos_bufferTopo = 0;
 	uint8_t pos_bufferData = 0;
 
+task void replyTopoTask();
+task void replyDataTask();
 
 #if defined(PLATFORM_MICAZ)
 	bool bRequestData = TRUE;
@@ -116,17 +118,18 @@ implementation {
 		if(sending){
 			return;
 		}
-
-		eval = call SendRequest.send(AM_BROADCAST_ADDR, &beaconMsgBuffer, sizeof(request_topo_t));
-		if (eval == SUCCESS) {
-			sending = TRUE;
-			dbg("RequestTopo", "Request topology by node %hhu Time: %s\n", TOS_NODE_ID ,sim_time_string());
-			call Leds.led1On();
-			call Leds.led2Toggle();
-			//Request data
-			dbg("RequestTopo", "Request data after %d ms  Time: %s\n", 30000, sim_time_string());
-			call OrigPktTimer.startOneShot(15000);
-		}
+		//post replyTopoTask();
+		post replyDataTask();
+		// eval = call SendRequest.send(AM_BROADCAST_ADDR, &beaconMsgBuffer, sizeof(request_topo_t));
+		// if (eval == SUCCESS) {
+		// 	sending = TRUE;
+		// 	dbg("RequestTopo", "Request topology by node %hhu Time: %s\n", TOS_NODE_ID ,sim_time_string());
+		// 	call Leds.led1Toggle();
+		// 	call Leds.led2Toggle();
+		// 	//Request data
+		// 	dbg("RequestTopo", "Request data after %d ms  Time: %s\n", 30000, sim_time_string());
+		// 	//call OrigPktTimer.startOneShot(15000);
+		// }
 	}
 
 	void initRequestData(){
@@ -241,7 +244,8 @@ implementation {
 		error_t eval;
 		reply_topo_t* pkt = (reply_topo_t*)call SendReply.getPayload(&topoMsgBuffer, sizeof(reply_topo_t));
 		dbg("RequestTopo", "ReplyTopoTask Time: %s\n", sim_time_string());
-
+		call Leds.led1On();
+		call Leds.led2Toggle();
 
 		if (sending) {
 			dbg("RequestTopo", "Error in reply  Time: %s\n", sim_time_string());
@@ -650,10 +654,11 @@ implementation {
 
 	event message_t* ReceiveRequest.receive(message_t* msg, void* payload, uint8_t len) {
 
-		//testes REMOVE
+		#if defined(PLATFORM_MICAZ)
 		if(TOS_NODE_ID == 0){
 			return msg;
 		}
+		#endif
 
 		if (len == sizeof(request_topo_t)) {
 			uint8_t type = call AMPacket.type(msg);
