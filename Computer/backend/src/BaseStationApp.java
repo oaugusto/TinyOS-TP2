@@ -106,7 +106,9 @@ public class BaseStationApp extends Thread implements MessageListener {
 			if (client == null || client.isClosed()) {
 				return;
 			}
+			
 			PrintWriter out = null;
+			
 			try {
 				out = new PrintWriter( client.getOutputStream() );
 			} catch (IOException e) {
@@ -116,7 +118,7 @@ public class BaseStationApp extends Thread implements MessageListener {
 			String jsonMsg = MessageCode.encodeReplyDataToJson((ReplyData)msg);
 			out.println( jsonMsg );
             out.flush();
-            out.close();
+            //out.close();
 
 		}
 		
@@ -182,11 +184,11 @@ public class BaseStationApp extends Thread implements MessageListener {
 	      phoenix = BuildSource.makePhoenix(source, PrintStreamMessenger.err);
 	    }
 	    
-	    System.out.print(phoenix);
-		BaseStationApp base = new BaseStationApp();
-		
+	    //System.out.print(phoenix);
 		//------------------------------------------------------------------------	
 		//start server
+	    
+	    BaseStationApp base = new BaseStationApp();
 		base.startServer();
 		
 		System.out.println("Start server in port 9000!");
@@ -211,7 +213,7 @@ class RequestHandler extends Thread
     {
         try
         {
-            System.out.println( "Received a connection" );
+            //System.out.println( "Received a connection" );
             BufferedReader in = null;
             String request;
             
