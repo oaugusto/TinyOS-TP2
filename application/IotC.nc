@@ -428,9 +428,10 @@ task void replyDataTask();
 			return;
 		}
 		sending = FALSE;
-
-		if(TOS_NODE_ID == 0)
-			return;
+		#if defined(PLATFORM_MICAZ)
+			if(TOS_NODE_ID == 0)
+				return;
+		#endif
 
 	    if (error == EBUSY) {
 	      retransmittingRequest = TRUE;
@@ -526,8 +527,10 @@ task void replyDataTask();
 		}
 		sending = FALSE;
 
-		if(TOS_NODE_ID == 0)
-			return;
+		#if defined(PLATFORM_MICAZ)
+			if(TOS_NODE_ID == 0)
+				return;
+		#endif
 
 	    if (error == EBUSY) {
 	      retransmittingRequestData = TRUE;
