@@ -1,7 +1,11 @@
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.Scanner;
 
 import net.tinyos.message.Message;
@@ -11,7 +15,7 @@ import net.tinyos.packet.BuildSource;
 import net.tinyos.packet.PhoenixSource;
 import net.tinyos.util.PrintStreamMessenger;
 
-public class BaseStationApp implements MessageListener{
+public class BaseStationApp extends Thread implements MessageListener {
 
 	private static ServerSocket server;
 	private static Socket client;
@@ -24,11 +28,15 @@ public class BaseStationApp implements MessageListener{
 	
 	public static int version_request_message = 0;
 	
-	public void startServer() throws IOException {
-		server = new ServerSocket(9000);
+	public void startServer() {
+		try {
+			server = new ServerSocket(8989);	
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
-	private static BaseStationApp getInstance() {
+	static BaseStationApp getInstance() {
 		if (baseStation == null) {
 			baseStation = new BaseStationApp();
 		}
@@ -50,10 +58,13 @@ public class BaseStationApp implements MessageListener{
 	
 	@Override
 	public void messageReceived(int destAddr, Message msg) {
-		PrintStream output = null;
-		
+				
 		if (msg instanceof ReplyTopo) {
 			ReplyTopo rcv = (ReplyTopo)msg;
+			
+			//if (rcv.get_seqno() < version_request_message) {
+			//	return;
+			//}
 			    
 			System.out.println("Message received:\n" 
 					+ "source: " + rcv.get_origem() + "\n"
@@ -61,18 +72,31 @@ public class BaseStationApp implements MessageListener{
 					+ "parent: " + rcv.get_parent() + "\n"
 					+ "seq: "    + rcv.get_seqno());
 			
-			String aux = MessageCode.encodeReplyTopoToJson((ReplyTopo)msg);
+			if (client.isClosed()) {
+				return;
+			}
+			
+			PrintWriter out = null;
+			
 			try {
-				output = new PrintStream(client.getOutputStream());
+				out = new PrintWriter( client.getOutputStream() );
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			String jsonMsg = MessageCode.encodeReplyTopoToJson((ReplyTopo)msg);
+			out.println( jsonMsg );
+            out.flush();
+            out.close();
 
 		}
 		
 		if (msg instanceof ReplyData) {
 			ReplyData rcv = (ReplyData)msg;
+			
+			//if (rcv.get_seqno() < version_request_message) {
+			//	return;
+			//}
 			
 			System.out.println("Message received:\n" 
 					+ "source: "     + rcv.get_origem() + "\n"
@@ -81,17 +105,22 @@ public class BaseStationApp implements MessageListener{
 					+ "temperature"  + rcv.get_data_temperature() + "\n"
 					+ "seq: "    + rcv.get_seqno());
 			
-			String aux = MessageCode.encodeReplyDataToJson((ReplyData)msg);
+			if (client.isClosed()) {
+				return;
+			}
+			PrintWriter out = null;
 			try {
-				output = new PrintStream(client.getOutputStream());
+				out = new PrintWriter( client.getOutputStream() );
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			String jsonMsg = MessageCode.encodeReplyDataToJson((ReplyData)msg);
+			out.println( jsonMsg );
+            out.flush();
+            out.close();
 
 		}
-		
-		output.close();
 		
 	}
 
@@ -111,6 +140,29 @@ public class BaseStationApp implements MessageListener{
 	public static void usage() {
 		System.out.println("usage: BaseStationApp [-comm <source>]");
 	}
+	
+	@Override
+    public void run()
+    {
+        while( true )
+        {
+            try
+            {
+                System.out.println( "Listening for a connection" );
+
+                // Call accept() to receive the next connection
+                client = server.accept();
+
+                // Pass the socket to the RequestHandler thread for processing
+                RequestHandler requestHandler = new RequestHandler( client );
+                requestHandler.start();
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
+    }
 	
 	public static void main(String[] args) throws Exception {
 		
@@ -133,19 +185,29 @@ public class BaseStationApp implements MessageListener{
 		BaseStationApp base = new BaseStationApp();
 		
 		//------------------------------------------------------------------------	
+		//start server
 		base.startServer();
 		
-		System.out.println("Porta 12345 aberta!");
-	     
-		client = server.accept();
-		System.out.println("Nova conex�o com o cliente " +   
-				client.getInetAddress().getHostAddress()
-				);
+		System.out.println("Start server in port 9000!");
+	    
+		BaseStationApp trd = new BaseStationApp();
+		trd.start();
 		
-		for(;;) {
-			Scanner s = new Scanner(client.getInputStream());
-			while (!s.hasNext());
-			String request = s.next();
+		/*
+		while (true) {
+			client = server.accept();
+			System.out.println("New connection " +   
+					client.getInetAddress().getHostAddress()
+					);
+			
+			RequestHandler requestHandler = new RequestHandler( client );
+	        requestHandler.start();
+		}
+		
+		BufferedReader in = new BufferedReader( new InputStreamReader( client.getInputStream() ) );
+		String request = in.readLine();
+		
+		while(request.length() > 0) {	
 			
 			if (request.equals("RequestTopo")) {
 				System.out.println("> RequestTopo");
@@ -157,14 +219,81 @@ public class BaseStationApp implements MessageListener{
 			
 			if (request.equals("RequestData")) {
 				System.out.println("> RequestData");
-				System.out.println(s.toString());
 				RequestData rqstMsg = new RequestData();
 				rqstMsg.amTypeSet(3);
 				rqstMsg.set_seqno(version_request_message++);
 				getInstance().sendMessageToMote(rqstMsg);
 			}
+			
+			request = in.readLine();
 		}
-		
+		*/
 	}
 	
+}
+
+class RequestHandler extends Thread
+{
+    private Socket socket;
+    RequestHandler( Socket socket )
+    {
+        this.socket = socket;
+    }
+
+    @Override
+    public void run()
+    {
+        try
+        {
+            System.out.println( "Received a connection" );
+            BufferedReader in = null;
+            String request;
+            
+            try {
+            	in = new BufferedReader( new InputStreamReader( socket.getInputStream() ) );
+            	request = in.readLine();
+            } catch (SocketException e) {
+            	in.close();
+                socket.close();
+                return;
+			}
+            	
+    		while(request.length() > 0) {	
+    			
+    			if (request.equals("RequestTopo")) {
+    				System.out.println("> RequestTopo");
+    				RequestTopo rqstMsg = new RequestTopo();
+    				rqstMsg.amTypeSet(1);
+    				rqstMsg.set_seqno(BaseStationApp.version_request_message++);
+    				BaseStationApp.getInstance().sendMessageToMote(rqstMsg);
+    			}
+    			
+    			if (request.equals("RequestData")) {
+    				System.out.println("> RequestData");
+    				RequestData rqstMsg = new RequestData();
+    				rqstMsg.amTypeSet(3);
+    				rqstMsg.set_seqno(BaseStationApp.version_request_message++);
+    				BaseStationApp.getInstance().sendMessageToMote(rqstMsg);
+    			}
+    			
+    			try {
+                	request = in.readLine();
+                } catch (SocketException e) {
+                	in.close();
+                    socket.close();
+                    return;
+    			}
+    		}
+
+            // Close our connection
+            in.close();
+            socket.close();
+
+            System.out.println( "Connection closed" );
+        }
+        catch( Exception e )
+        {
+            e.printStackTrace();
+        }
+    }
 }
