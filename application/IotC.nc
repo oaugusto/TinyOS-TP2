@@ -275,8 +275,8 @@ task void replyDataTask();
 
 		if (eval == SUCCESS) {
 			sending = TRUE;
+			call Leds.led0Toggle();
 			call Leds.led1Toggle();
-			call Leds.led2Toggle();
 		} 
 
 
@@ -372,8 +372,8 @@ task void replyDataTask();
 
 		if (eval == SUCCESS) {
 			sending = TRUE;
+			call Leds.led1Toggle();
 			call Leds.led2Toggle();
-			call Leds.led3Toggle();
 			//seqnoData++;
 		} 
 
