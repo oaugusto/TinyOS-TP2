@@ -1,12 +1,10 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
-import java.util.Scanner;
 
 import net.tinyos.message.Message;
 import net.tinyos.message.MessageListener;
@@ -17,8 +15,8 @@ import net.tinyos.util.PrintStreamMessenger;
 
 public class BaseStationApp extends Thread implements MessageListener {
 
-	private static ServerSocket server;
-	private static Socket client;
+	private static ServerSocket server = null;
+	private static Socket client = null;
 	
 	private static BaseStationApp baseStation;
 	private static MoteIF moteConnection;
@@ -72,7 +70,7 @@ public class BaseStationApp extends Thread implements MessageListener {
 					+ "parent: " + rcv.get_parent() + "\n"
 					+ "seq: "    + rcv.get_seqno());
 			
-			if (client.isClosed()) {
+			if (client == null || client.isClosed()) {
 				return;
 			}
 			
@@ -105,7 +103,7 @@ public class BaseStationApp extends Thread implements MessageListener {
 					+ "temperature"  + rcv.get_data_temperature() + "\n"
 					+ "seq: "    + rcv.get_seqno());
 			
-			if (client.isClosed()) {
+			if (client == null || client.isClosed()) {
 				return;
 			}
 			PrintWriter out = null;
@@ -165,7 +163,7 @@ public class BaseStationApp extends Thread implements MessageListener {
     }
 	
 	public static void main(String[] args) throws Exception {
-		
+		/*
 	    if (args.length == 2) {
 	      if (!args[0].equals("-comm")) {
 		       usage();
@@ -173,8 +171,11 @@ public class BaseStationApp extends Thread implements MessageListener {
 	      }
 	      source = args[1];
 	    }
-
-	    if (source == null) {
+	    */
+		
+		source = "serial@/dev/ttyUSB1:iris";
+		
+		if (source == null) {
 	      phoenix = BuildSource.makePhoenix(PrintStreamMessenger.err);
 	    }
 	    else {
@@ -192,42 +193,7 @@ public class BaseStationApp extends Thread implements MessageListener {
 	    
 		BaseStationApp trd = new BaseStationApp();
 		trd.start();
-		
-		/*
-		while (true) {
-			client = server.accept();
-			System.out.println("New connection " +   
-					client.getInetAddress().getHostAddress()
-					);
-			
-			RequestHandler requestHandler = new RequestHandler( client );
-	        requestHandler.start();
-		}
-		
-		BufferedReader in = new BufferedReader( new InputStreamReader( client.getInputStream() ) );
-		String request = in.readLine();
-		
-		while(request.length() > 0) {	
-			
-			if (request.equals("RequestTopo")) {
-				System.out.println("> RequestTopo");
-				RequestTopo rqstMsg = new RequestTopo();
-				rqstMsg.amTypeSet(1);
-				rqstMsg.set_seqno(version_request_message++);
-				getInstance().sendMessageToMote(rqstMsg);
-			}
-			
-			if (request.equals("RequestData")) {
-				System.out.println("> RequestData");
-				RequestData rqstMsg = new RequestData();
-				rqstMsg.amTypeSet(3);
-				rqstMsg.set_seqno(version_request_message++);
-				getInstance().sendMessageToMote(rqstMsg);
-			}
-			
-			request = in.readLine();
-		}
-		*/
+	
 	}
 	
 }

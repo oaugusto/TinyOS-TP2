@@ -2,8 +2,6 @@ import org.json.*;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import net.tinyos.message.Message;
-
 public class MessageCode {
 
 	public static String encodeReplyTopoToJson(ReplyTopo msg){
