@@ -30,25 +30,45 @@ $('document').ready(function(){
         },
         height: '95%',
     };
+
+    $('.btn#reqread').hide();
 });
 
-/**/
-var updateNodes = function(){
-    nodes.forEach(function(element) {
-        var temp = (Math.random() * 20) + 10;
-        var lum = (Math.random() * 200) + 100;
-        element.label = 'Node ' + element.id + '\nTemp.: '+ temp.toFixed(2) +' C\nLum.: '+ lum.toFixed(2);
-        nodes.update(element);
-    });
-}
+$('#btn-conn').click(function(){
+    socket.emit('connsetings', {host: $('#host_addr').val(),
+                                port: $('#port').val()});
+})
+
+socket.on('connstatus', function(msg){
+    console.log(msg);
+
+    // Feedback
+    if (msg.isConn) {
+        $('div#conpanel').fadeOut(600);
+        $('div.btn-panel').fadeIn(600);
+        $('label#status').text('Connected.')
+                         .css({'color': 'green', 'font-weight': 'bold',
+                               'font-size': '16px'});
+
+    } else {
+        $('label#status').text('Error: Base station not found. Try again.')
+                         .css({'color': 'red', 'font-weight': 'bold',
+                               'font-size': '16px'});
+    }
+})
 
 var createNodeLabel = function(id, temp, lum){
-    return 'Node ' + id
+    if (id == 1)
+        node_id = 'Base';
+    else
+        node_id = id;
+
+    return 'Node ' + node_id
          + '\nTemp.: '+ temp.toFixed(2)
          + ' C\nLum.: '+ lum.toFixed(2) + ' lux';
 }
 
-// Requests
+// Topology request
 $('#reqtop').click(function(){
     $('div#top').empty();
     socket.emit('reqtop', {request: true});
@@ -65,17 +85,32 @@ $('#reqtop').click(function(){
 })
 
 socket.on('restop', function(msg){
-    console.log('Message Received.');
+    console.log('Message Received: ', msg);
+
+    if($('.btn#reqread').is(":hidden")) {
+        $('.btn#reqread').fadeIn(600)
+        $('div.multreadpanel').fadeIn(600);
+    }
+
+    console.log(nodes);
 
     if (nodes.get(msg.parent) == null) {
-        var node_label = "Node " + msg.parent;
+        if (msg.parent == 1)
+            node_label = "Base Station";
+        else
+            node_label = "Node " + msg.parent;
+            
         nodes.add({id: msg.parent,
                    label: node_label,
                    color: '#d3d3d3'})
     }
 
     if (nodes.get(msg.child) == null) {
-        var node_label = "Node " + msg.child;
+        if (msg.child == 1)
+            node_label = "Base Station";
+        else
+            node_label = "Node " + msg.child;
+
         nodes.add({id: msg.child,
                    label: node_label,
                    color: '#d3d3d3'})
@@ -87,25 +122,32 @@ socket.on('restop', function(msg){
 
 // Individual read function.
 var read_fun = function(){
-    nodes.forEach(function(node) {
-        node.color = '#d3d3d3';
-    });
-    
+    if (nodes != null) {
+        nodes.forEach(function(node) {
+            node.color = '#d3d3d3';
+            nodes.update({id: node.id, 
+                         label: node.label,
+                         color: node.color});
+        });
+    }
+
     socket.emit('reqread', {request: true});
 };
 
-// Request
+// Read request
 $('#reqread').click(read_fun);
 
-// Answers
+// Handle read answer
 socket.on('resread', function(msg){
     console.log('Read Received.');
 
-    var node_label = createNodeLabel(msg.src, msg.temp, msg.lum); 
+    if (network != null) {
+        var node_label = createNodeLabel(msg.src, msg.temp, msg.lum); 
 
-    nodes.update({id: msg.src,
-                  label: node_label,
-                  color: '#8AF487'});
+        nodes.update({id: msg.src,
+                    label: node_label,
+                    color: '#8AF487'});
+    }
 })
 
 
@@ -120,10 +162,4 @@ $('#reqmread').click(function(){
         }
     }
 })
-
-/*socket.on('resmread', function(msg){
-    if (msg.request) {
-        $('div#top').append('<p>ReqMulRead</p>')
-    } 
-})*/
 

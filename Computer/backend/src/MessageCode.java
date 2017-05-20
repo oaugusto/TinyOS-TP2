@@ -16,7 +16,7 @@ public class MessageCode {
 		JSONObject json = new JSONObject();
 		json.put("seq", msg.get_seqno());
 		json.put("id",  msg.get_origem());
-		json.put("temperature", msg.get_data_temperature());
+		json.put("temperature", convertTemperature(msg.get_data_temperature()));
 		json.put("luminosity", msg.get_data_luminosity());		
 		return json.toString();
 	}
@@ -45,6 +45,20 @@ public class MessageCode {
 			e.printStackTrace();
 		}
 		return msg;		
+	}
+	
+	public static double convertTemperature(int tempRead){
+		//System.out.println("Converting " + tempRead + " to celsius");
+		double tempCelsius = 0;
+		try {
+			double rthr = 10000 * (1023-tempRead)/tempRead;
+			double logRthr = Math.log(rthr);
+			double tempKelvin = 1 / (0.001010024+ (0.000242127 * logRthr) + (0.000000146 * Math.pow(logRthr, 3)));
+			tempCelsius = tempKelvin - 273.15;
+		} catch (ArithmeticException e) {
+			System.out.println("Falha ao converter temperatura.");
+		}
+		return tempCelsius;
 	}
 	
 }

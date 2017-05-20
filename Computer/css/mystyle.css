@@ -34,10 +34,17 @@ div.line {
     font-size: 18px;
 }
 
+#btn-conn {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: 18px;
+}
+
 .multreadpanel {
-    border-top: 2px solid #adadad;
-    background-color: #adadad;
+    /*border-top: 2px solid #adadad;*/
+    background-color: #e6e6e6;
     padding-bottom: 5px;
+    padding-top: 3px;
 }
 
 div.header {

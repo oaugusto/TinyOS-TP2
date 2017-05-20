@@ -13,14 +13,28 @@ html
         span 
           b #{AppName}
       div#top.col-sm-12.panel
-      div.col-sm-12.line.btn-panel
-        a.btn.btn-primary#reqtop(href="#") 
+      div#conpanel.col-sm-12
+        form#form-conn
+          label Host:
+            input#host_addr.form-control(type="text", value="127.0.0.1")
+          span &nbsp;
+          label Port:
+            input#port.form-control(type="number", value="9000", min="1")
+          span &nbsp;
+          span &nbsp;
+          a.btn.btn-warning#btn-conn(href="javascript:void(0)") 
+            b Connect
+          span &nbsp;
+          span &nbsp;
+          label#status
+      div.col-sm-12.line.btn-panel(style="display:none")
+        a.btn.btn-primary#reqtop(href="javascript:void(0)") 
           b Get Network Topology
         span &nbsp;
-        a.btn.btn-danger#reqread(href="#") 
+        a.btn.btn-danger#reqread(href="javascript:void(0)") 
           b Request Read
         span &nbsp;
-      div.col-sm-12.line.multreadpanel
+      div.col-sm-12.line.multreadpanel(style="display:none")
         form
           label Number of Rounds:
             input#numreads.form-control(type="number", value="10" name="name", min = "1")
@@ -29,7 +43,7 @@ html
             input#time.form-control(type="number", value="1500" name="name", min = "1")
           span &nbsp;
         span
-          a.btn.btn-success#reqmread(href="#") 
+          a.btn.btn-success#reqmread(href="javascript:void(0)") 
             b Request Multiple Reads 
     
   script(src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js")

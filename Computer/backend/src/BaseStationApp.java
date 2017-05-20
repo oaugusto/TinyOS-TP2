@@ -24,11 +24,11 @@ public class BaseStationApp extends Thread implements MessageListener {
 	public static PhoenixSource phoenix;
 	public static String source; 
 	
-	public static int version_request_message = 0;
+	public static int version_request_message = 1;
 	
 	public void startServer() {
 		try {
-			server = new ServerSocket(8989);	
+			server = new ServerSocket(9000);	
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -85,7 +85,7 @@ public class BaseStationApp extends Thread implements MessageListener {
 			String jsonMsg = MessageCode.encodeReplyTopoToJson((ReplyTopo)msg);
 			out.println( jsonMsg );
             out.flush();
-            out.close();
+            //out.close();
 
 		}
 		
@@ -220,6 +220,7 @@ class RequestHandler extends Thread
             try {
             	in = new BufferedReader( new InputStreamReader( socket.getInputStream() ) );
             	request = in.readLine();
+            	
             } catch (SocketException e) {
             	in.close();
                 socket.close();
@@ -227,7 +228,7 @@ class RequestHandler extends Thread
 			}
             	
     		while(request.length() > 0) {	
-    			
+    			System.out.println(request);
     			if (request.equals("RequestTopo")) {
     				System.out.println("> RequestTopo");
     				RequestTopo rqstMsg = new RequestTopo();
@@ -246,21 +247,22 @@ class RequestHandler extends Thread
     			
     			try {
                 	request = in.readLine();
+                	
                 } catch (SocketException e) {
+                	System.out.println("Closed");
                 	in.close();
                     socket.close();
                     return;
     			}
     		}
-
+    		
             // Close our connection
             in.close();
             socket.close();
 
             System.out.println( "Connection closed" );
         }
-        catch( Exception e )
-        {
+        catch( Exception e ) {
             e.printStackTrace();
         }
     }
