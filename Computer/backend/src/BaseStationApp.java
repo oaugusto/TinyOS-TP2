@@ -85,7 +85,7 @@ public class BaseStationApp extends Thread implements MessageListener {
 			String jsonMsg = MessageCode.encodeReplyTopoToJson((ReplyTopo)msg);
 			out.println( jsonMsg );
             out.flush();
-            out.close();
+            //out.close();
 
 		}
 		
