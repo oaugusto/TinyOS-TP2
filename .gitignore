@@ -3,3 +3,4 @@ package.json
 yarn.lock
 Computer/package.json
 Computer/yarn.lock
+*.java~

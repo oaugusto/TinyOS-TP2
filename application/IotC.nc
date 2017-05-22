@@ -70,7 +70,10 @@ implementation {
 	uint16_t seqnoReqData = 0;
 	uint16_t seqnoReplyTopo = 0;
 	uint16_t seqnoReplyData = 0;
+
+#if defined(PLATFORM_MICAZ)
 	uint8_t count = 1;
+#endif
 
 	uint16_t seqnoOrigTopo = 1;
 	uint16_t seqnoOrigData = 1;
@@ -101,6 +104,8 @@ implementation {
 	uint8_t pos_bufferTopo = 0;
 	uint8_t pos_bufferData = 0;
 
+task void replyTopoTask();
+task void replyDataTask();
 
 #if defined(PLATFORM_MICAZ)
 	bool bRequestData = TRUE;
@@ -116,17 +121,18 @@ implementation {
 		if(sending){
 			return;
 		}
-
-		eval = call SendRequest.send(AM_BROADCAST_ADDR, &beaconMsgBuffer, sizeof(request_topo_t));
-		if (eval == SUCCESS) {
-			sending = TRUE;
-			dbg("RequestTopo", "Request topology by node %hhu Time: %s\n", TOS_NODE_ID ,sim_time_string());
-			call Leds.led1On();
-			call Leds.led2Toggle();
-			//Request data
-			dbg("RequestTopo", "Request data after %d ms  Time: %s\n", 30000, sim_time_string());
-			call OrigPktTimer.startOneShot(15000);
-		}
+		//post replyTopoTask();
+		post replyDataTask();
+		// eval = call SendRequest.send(AM_BROADCAST_ADDR, &beaconMsgBuffer, sizeof(request_topo_t));
+		// if (eval == SUCCESS) {
+		// 	sending = TRUE;
+		// 	dbg("RequestTopo", "Request topology by node %hhu Time: %s\n", TOS_NODE_ID ,sim_time_string());
+		// 	call Leds.led1Toggle();
+		// 	call Leds.led2Toggle();
+		// 	//Request data
+		// 	dbg("RequestTopo", "Request data after %d ms  Time: %s\n", 30000, sim_time_string());
+		// 	//call OrigPktTimer.startOneShot(15000);
+		// }
 	}
 
 	void initRequestData(){
@@ -272,6 +278,8 @@ implementation {
 
 		if (eval == SUCCESS) {
 			sending = TRUE;
+			call Leds.led0Toggle();
+			call Leds.led1Toggle();
 		} 
 
 
@@ -363,10 +371,12 @@ implementation {
 		
 		dbg("RequestData", "Task replyDataTask from node %hhu to node %hhu seqno %hhu Time: %s\n", pktData->origem, parent, pktData->seqno, sim_time_string());
 		
-		eval = call TxReplyData.send(parent, &dataBuffer, sizeof(reply_data_t));		
+		eval = call TxReplyData.send(parent, &dataBuffer, sizeof(reply_data_t));	
 
 		if (eval == SUCCESS) {
 			sending = TRUE;
+			call Leds.led1Toggle();
+			call Leds.led2Toggle();
 			//seqnoData++;
 		} 
 
@@ -422,9 +432,10 @@ implementation {
 			return;
 		}
 		sending = FALSE;
-
-		if(TOS_NODE_ID == 0)
-			return;
+		#if defined(PLATFORM_MICAZ)
+			if(TOS_NODE_ID == 0)
+				return;
+		#endif
 
 	    if (error == EBUSY) {
 	      retransmittingRequest = TRUE;
@@ -520,8 +531,10 @@ implementation {
 		}
 		sending = FALSE;
 
-		if(TOS_NODE_ID == 0)
-			return;
+		#if defined(PLATFORM_MICAZ)
+			if(TOS_NODE_ID == 0)
+				return;
+		#endif
 
 	    if (error == EBUSY) {
 	      retransmittingRequestData = TRUE;
@@ -598,13 +611,11 @@ implementation {
 
 	event void RetryTimer.fired() {
 	    if (retransmittingRequest && bTxRequest) {
-	    	if(TOS_NODE_ID != 0)
-      			post sendBeaconTask();
+  			post sendBeaconTask();
 
     	}
 	    if (retransmittingRequestData && bTxData) {
-	    	if(TOS_NODE_ID != 0)
-      			post requestDataTask();
+  			post requestDataTask();
 
     	}
 	}
@@ -650,10 +661,11 @@ implementation {
 
 	event message_t* ReceiveRequest.receive(message_t* msg, void* payload, uint8_t len) {
 
-		//testes REMOVE
+		#if defined(PLATFORM_MICAZ)
 		if(TOS_NODE_ID == 0){
 			return msg;
 		}
+		#endif
 
 		if (len == sizeof(request_topo_t)) {
 			uint8_t type = call AMPacket.type(msg);
@@ -665,7 +677,7 @@ implementation {
 			rcvBeacon = (request_topo_t*)payload;
 			seqnoAux = rcvBeacon->seqno;
 			//dbg("RequestTopo", "Received rcvBeacon->seqno %hhu. Time: %s\n", rcvBeacon->seqno , sim_time_string());
-			if(seqnoAux != seqnoReqTopo){ 
+			if(seqnoAux > seqnoReqTopo){ 
 				seqnoReqTopo = seqnoAux;
 				parent = from; //Usa para resposta
 				dbg("RequestTopo", "Configura parent %d Time: %s\n", parent,  sim_time_string());
@@ -694,7 +706,7 @@ implementation {
 			origemPkt = rcvTopo->origem;
 
 			//Forward
-			if(seqnoAux != seqnoReplyTopo || !check_node(origemPkt, bufferTopo_ids)){
+			if(seqnoAux > seqnoReplyTopo || !check_node(origemPkt, bufferTopo_ids)){
 				seqnoReplyTopo = seqnoAux;
 				dbg("RequestTopo", "Receive reply topo of node %hhu origem %hhu Forward Time: %s\n", from, origemPkt, sim_time_string());
 				//dbg("RequestTopo", "Received seqnoAux %hhu seqno %hhu. Time: %s\n", seqnoAux, seqno, sim_time_string());
@@ -716,7 +728,7 @@ implementation {
 			pktReqData = (request_data_t*)payload;
 			seqnoAux = pktReqData->seqno;
 			//dbg("RequestTopo", "Received pktReqData->seqno %hhu. Time: %s\n", pktReqData->seqno , sim_time_string());
-			if(seqnoAux != seqnoReqData){
+			if(seqnoAux > seqnoReqData){
 				seqnoReqData = seqnoAux;
 				//parent = from; //Usa para resposta
 				//dbg("RequestTopo", "Configura parent %d Time: %s\n", parent,  sim_time_string());
@@ -743,7 +755,7 @@ implementation {
 			seqnoAux = pktData->seqno;
 			origemPkt = pktData->origem;
 
-			if(seqnoAux != seqnoReplyData || !check_node(origemPkt, bufferData_ids)){
+			if(seqnoAux > seqnoReplyData || !check_node(origemPkt, bufferData_ids)){
 				seqnoReplyData = seqnoAux;
 				dbg("RequestTopo", "Receive reply of data of node %hhu origem %hhu Forward Time: %s\n", from, origemPkt, sim_time_string());
 				//dbg("RequestTopo", "Received seqnoAux %hhu seqno %hhu. Time: %s\n", seqnoAux, seqno, sim_time_string());

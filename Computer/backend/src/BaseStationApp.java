@@ -25,6 +25,12 @@ public class BaseStationApp extends Thread implements MessageListener {
 	public static String source; 
 	
 	public static int version_request_message = 1;
+	public static int msg_count = 0;
+	
+	//counting elapsed time between messages
+	public static long startTime = 0;
+	public static long estimateTime = 0;
+	//--------------------------------------
 	
 	public void startServer() {
 		try {
@@ -64,7 +70,8 @@ public class BaseStationApp extends Thread implements MessageListener {
 			//	return;
 			//}
 			    
-			System.out.println("Message received:\n" 
+			System.out.println("Message received at time: " 
+					+ (System.currentTimeMillis() - startTime) + "\n" 
 					+ "source: " + rcv.get_origem() + "\n"
 					+ "type: "   + rcv.amType()     + "\n"
 					+ "parent: " + rcv.get_parent() + "\n"
@@ -96,7 +103,8 @@ public class BaseStationApp extends Thread implements MessageListener {
 			//	return;
 			//}
 			
-			System.out.println("Message received:\n" 
+			System.out.println("Message received at time: " 
+					+ (System.currentTimeMillis() - startTime) + "\n"  
 					+ "source: "     + rcv.get_origem() + "\n"
 					+ "type: "       + rcv.amType()     + "\n"
 					+ "luminosity: " + rcv.get_data_luminosity() + "\n"
@@ -230,6 +238,7 @@ class RequestHandler extends Thread
     		while(request.length() > 0) {	
     			System.out.println(request);
     			if (request.equals("RequestTopo")) {
+    				BaseStationApp.startTime = System.currentTimeMillis();
     				System.out.println("> RequestTopo");
     				RequestTopo rqstMsg = new RequestTopo();
     				rqstMsg.amTypeSet(1);
@@ -238,6 +247,7 @@ class RequestHandler extends Thread
     			}
     			
     			if (request.equals("RequestData")) {
+    				BaseStationApp.startTime = System.currentTimeMillis();
     				System.out.println("> RequestData");
     				RequestData rqstMsg = new RequestData();
     				rqstMsg.amTypeSet(3);
