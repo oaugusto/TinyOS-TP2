@@ -97,7 +97,7 @@ implementation {
 	bool bTxData = FALSE;
 	bool createPkt = FALSE;
 
-	uint16_t window = 2500;
+	uint16_t window = 500;
 
 	uint16_t bufferTopo_ids[TAM_BUF];
 	uint16_t bufferData_ids[TAM_BUF];
@@ -228,7 +228,7 @@ task void replyDataTask();
 		//Reply topo
 		r = call Random.rand16();
 		r %= window;
-		r += 500;
+		r += 200;
 		dbg("RequestTopo", "Reply topo after %d ms  Time: %s\n", r, sim_time_string());
 		
 		pkt = (reply_topo_t*)call SendReply.getPayload(&topoMsgBuffer, sizeof(reply_topo_t));
@@ -328,7 +328,7 @@ task void replyDataTask();
 		//Reply data
 		r = call Random.rand16();
 		r %= window;
-		r += 500;
+		r += 200;
 		dbg("RequestData", "Reply data after %d ms  Time: %s\n", r, sim_time_string());
 		pktData = (reply_data_t*)(call TxReplyData.getPayload(&dataBuffer, sizeof(reply_data_t)));
 		pktData->seqno = seqnoOrigData;
@@ -660,19 +660,22 @@ task void replyDataTask();
 	}
 
 	event message_t* ReceiveRequest.receive(message_t* msg, void* payload, uint8_t len) {
-
+	
+		uint8_t type = call AMPacket.type(msg);
+		am_addr_t from;
+		request_topo_t* rcvBeacon;
+	
 		#if defined(PLATFORM_MICAZ)
 		if(TOS_NODE_ID == 0){
 			return msg;
 		}
 		#endif
 
-		if (len == sizeof(request_topo_t)) {
-			uint8_t type = call AMPacket.type(msg);
-			am_addr_t from;
+		//if (len == sizeof(request_topo_t)) {
+
 			//dbg("RequestTopo", "Received packet type %hhu. Time: %s\n", type, sim_time_string());
 
-		    request_topo_t* rcvBeacon;
+		    
 			from = call AMPacket.source(msg);
 			rcvBeacon = (request_topo_t*)payload;
 			seqnoAux = rcvBeacon->seqno;
@@ -687,15 +690,15 @@ task void replyDataTask();
 				post sendBeaconTask();
 			}
 
-		}
+		//}
 
 		return msg;
 
 	}
 
 	event message_t* ReceiveReply.receive(message_t* msg, void* payload, uint8_t len) {
-		dbg("Receive", "ReceivedReply packet len %hhu. Time: %s\n", len, sim_time_string());
-		if (len == sizeof(reply_topo_t)) {
+		//dbg("Receive", "ReceivedReply packet len %hhu. Time: %s\n", len, sim_time_string());
+		//if (len == sizeof(reply_topo_t)) {
 			uint8_t type = call AMPacket.type(msg);
 			am_addr_t from;
 			am_addr_t origemPkt;
@@ -714,15 +717,15 @@ task void replyDataTask();
 				addContent(bufferTopo_ids, origemPkt, &pos_bufferTopo);
 				post replyTopoTask();
 			}
-		}
+		//}
 		
 		return msg;
 
 	}
 
 	event message_t* RxReqData.receive(message_t* msg, void* payload, uint8_t len) {
-		dbg("RequestData", "Receive request of data packet len %hhu. Time: %s\n", len, sim_time_string());
-		if (len == sizeof(request_data_t)) {
+		//dbg("RequestData", "Receive request of data packet len %hhu. Time: %s\n", len, sim_time_string());
+		//if (len == sizeof(request_data_t)) {
 		    request_data_t* pktReqData;
 			am_addr_t from = call AMPacket.source(msg);
 			pktReqData = (request_data_t*)payload;
@@ -737,15 +740,15 @@ task void replyDataTask();
 				requestDataBuffer = *msg;
 				post requestDataTask();
 			}
-		}
+		//}
 		
 		return msg;
 
 	}
 
 	event message_t* RxReplyData.receive(message_t* msg, void* payload, uint8_t len) {
-		dbg("RequestData", "Receive reply of data packet len %hhu. Time: %s\n", len, sim_time_string());
-		if (len == sizeof(reply_data_t)) {
+		//dbg("RequestData", "Receive reply of data packet len %hhu. Time: %s\n", len, sim_time_string());
+		//if (len == sizeof(reply_data_t)) {
 			uint8_t type = call AMPacket.type(msg);
 			am_addr_t from;
 			am_addr_t origemPkt;
@@ -764,7 +767,7 @@ task void replyDataTask();
 				post replyDataTask();
 
 			}
-		}
+		//}
 		
 		return msg;
 
